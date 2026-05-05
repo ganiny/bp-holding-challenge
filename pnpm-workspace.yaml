@@ -1,0 +1,12 @@
+allowBuilds:
+  '@parcel/watcher': true
+  '@prisma/engines': true
+  '@sentry/cli': set this to true or false
+  '@swc/core': true
+  msw: true
+  prisma: true
+  sharp: true
+  unrs-resolver: true
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver

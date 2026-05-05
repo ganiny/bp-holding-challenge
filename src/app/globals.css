@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-navy-hover: var(--brand-navy-hover);
+  --color-brand-navy-soft: var(--brand-navy-soft);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-hover: var(--brand-gold-hover);
+  --color-brand-gold-soft: var(--brand-gold-soft);
+  --color-brand-cream: var(--brand-cream);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --animate-scroll-left: scroll_left var(--animation-duration, 4000s)
+    var(--animation-direction, forwards) linear infinite;
+  @keyframes scroll_left {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+  --animate-scroll-right: scroll_right var(--animation-duration, 4000s)
+    var(--animation-direction, forwards) linear infinite;
+  @keyframes scroll_right {
+    to {
+      transform: translate(calc(50% - 0.5rem));
+    }
+  }
+}
+
+/* Aceternity InfiniteMovingCards scroll animation.
+   The component sets --animation-duration (20s/40s/80s) and
+   --animation-direction (forwards/reverse) inline on the parent. */
+
+/* .animate-scroll {
+  animation: scroll var(--animation-duration, infinite) var(--animation-direction, forwards) linear infinite;
+} */
+
+/*
+ * Brand palette
+ *   Navy  #052a42  → oklch(0.245 0.054 245)
+ *   Gold  #df9a13  → oklch(0.745 0.155 70)
+ *   Cream #fbf9f4  → oklch(0.985 0.005 85)
+ */
+:root {
+  --brand-navy: oklch(0.245 0.054 245);
+  --brand-navy-hover: oklch(0.305 0.06 245);
+  --brand-navy-soft: oklch(0.95 0.012 245);
+  --brand-gold: oklch(0.745 0.155 70);
+  --brand-gold-hover: oklch(0.785 0.16 70);
+  --brand-gold-soft: oklch(0.96 0.04 80);
+  --brand-cream: oklch(0.985 0.005 85);
+
+  --background: var(--brand-cream);
+  --foreground: var(--brand-navy);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--brand-navy);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--brand-navy);
+  --primary: var(--brand-navy);
+  --primary-foreground: var(--brand-cream);
+  --secondary: var(--brand-navy-soft);
+  --secondary-foreground: var(--brand-navy);
+  --muted: oklch(0.96 0.005 245);
+  --muted-foreground: oklch(0.5 0.025 245);
+  --accent: var(--brand-gold);
+  --accent-foreground: var(--brand-navy);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.9 0.01 245);
+  --input: oklch(0.92 0.01 245);
+  --ring: var(--brand-gold);
+
+  --chart-1: var(--brand-navy);
+  --chart-2: var(--brand-gold);
+  --chart-3: oklch(0.55 0.07 245);
+  --chart-4: oklch(0.65 0.12 70);
+  --chart-5: oklch(0.4 0.08 245);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: var(--brand-navy);
+  --sidebar-primary: var(--brand-navy);
+  --sidebar-primary-foreground: var(--brand-cream);
+  --sidebar-accent: var(--brand-navy-soft);
+  --sidebar-accent-foreground: var(--brand-navy);
+  --sidebar-border: oklch(0.9 0.01 245);
+  --sidebar-ring: var(--brand-gold);
+}
+
+.dark {
+  --background: oklch(0.18 0.04 245);
+  --foreground: var(--brand-cream);
+  --card: oklch(0.22 0.045 245);
+  --card-foreground: var(--brand-cream);
+  --popover: oklch(0.22 0.045 245);
+  --popover-foreground: var(--brand-cream);
+  --primary: var(--brand-gold);
+  --primary-foreground: var(--brand-navy);
+  --secondary: oklch(0.28 0.04 245);
+  --secondary-foreground: var(--brand-cream);
+  --muted: oklch(0.26 0.035 245);
+  --muted-foreground: oklch(0.72 0.02 245);
+  --accent: var(--brand-gold);
+  --accent-foreground: var(--brand-navy);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--brand-gold);
+
+  --chart-1: var(--brand-gold);
+  --chart-2: oklch(0.65 0.06 245);
+  --chart-3: oklch(0.85 0.05 70);
+  --chart-4: oklch(0.7 0.12 245);
+  --chart-5: oklch(0.55 0.08 70);
+
+  --sidebar: oklch(0.22 0.045 245);
+  --sidebar-foreground: var(--brand-cream);
+  --sidebar-primary: var(--brand-gold);
+  --sidebar-primary-foreground: var(--brand-navy);
+  --sidebar-accent: oklch(0.28 0.04 245);
+  --sidebar-accent-foreground: var(--brand-cream);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--brand-gold);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  /* RTL: mirror Arabic with Cairo, keep LTR with Inter */
+  :lang(ar) {
+    font-family: var(--font-ar), var(--font-en), system-ui, sans-serif;
+  }
+  :lang(en) {
+    font-family: var(--font-en), system-ui, sans-serif;
+  }
+}

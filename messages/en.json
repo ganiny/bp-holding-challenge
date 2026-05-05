@@ -1,0 +1,640 @@
+{
+  "common": {
+    "siteName": "BP Holding",
+    "siteFullName": "Business Pioneers Holding",
+    "tagline": "Building the future with integrated solutions",
+    "comingSoon": "Coming soon"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "studio": "Studio",
+    "certifications": "Certifications",
+    "careers": "Careers",
+    "contractors": "Contractors",
+    "rfq": "Request a quote",
+    "contact": "Contact",
+    "companyProfile": "Company profile",
+    "login": "Sign in",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "footer": {
+    "exploreTitle": "Explore",
+    "workWithUsTitle": "Work with us",
+    "contactTitle": "Contact",
+    "legalTitle": "Legal",
+    "privacy": "Privacy policy",
+    "terms": "Terms of service",
+    "address": "Riyadh, King Fahd Road",
+    "addressJeddah": "Jeddah, Al-Tahlia Street",
+    "rights": "© {year} Business Pioneers Holding. All rights reserved.",
+    "social": "Follow us"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Saudi engineering & contracting",
+      "title": "We build the structures that move Saudi forward.",
+      "subtitle": "From foundation to finishing — engineering, structural works, interior design, and contracting under one roof.",
+      "ctaPrimary": "Start your project",
+      "ctaSecondary": "Browse our work"
+    },
+    "stats": {
+      "title": "By the numbers",
+      "yearsLabel": "Years of operation",
+      "clientsLabel": "Trusted clients",
+      "sectorsLabel": "Integrated sectors",
+      "projectsLabel": "Completed projects"
+    },
+    "services": {
+      "eyebrow": "What we do",
+      "title": "Five disciplines, one partner",
+      "subtitle": "End-to-end delivery across the entire project lifecycle.",
+      "viewAll": "View all services"
+    },
+    "projects": {
+      "eyebrow": "Selected work",
+      "title": "Recent projects",
+      "subtitle": "A sample of recently delivered engagements across the Kingdom.",
+      "viewAll": "View full portfolio",
+      "viewProject": "View project"
+    },
+    "testimonials": {
+      "eyebrow": "Trusted by",
+      "title": "Voices from our clients"
+    },
+    "cta": {
+      "title": "Ready to start your next project?",
+      "subtitle": "Tell us about your build — we'll come back with a tailored quote within two business days.",
+      "button": "Request a quote"
+    }
+  },
+  "sectors": {
+    "residential": "Residential",
+    "structural": "Structural",
+    "interior": "Interior",
+    "consulting": "Consulting",
+    "general": "General contracting"
+  },
+  "careers": {
+    "metaTitle": "Careers",
+    "metaDescription": "Open roles at BP Holding — engineering, contracting, design, and corporate functions. Build your career with a Saudi holding group operating across four integrated sectors.",
+    "eyebrow": "Join us",
+    "title": "Build the Kingdom with us",
+    "lead": "We hire engineers, project managers, finishing specialists, and corporate professionals who share one trait — they ship work they're proud of. Browse open roles below.",
+    "empty": "No open roles right now. Check back soon — or send a speculative application to careers@bpholding.net.",
+    "card": {
+      "apply": "Apply now",
+      "details": "View details",
+      "departmentLabel": "Department",
+      "locationLabel": "Location",
+      "typeLabel": "Type",
+      "closesLabel": "Apply by",
+      "openLabel": "Open"
+    },
+    "filters": {
+      "department": "Department",
+      "type": "Type",
+      "location": "Location",
+      "all": "All",
+      "reset": "Reset filters",
+      "noResults": "No roles match your filters."
+    },
+    "detail": {
+      "back": "All open roles",
+      "aboutTitle": "About the role",
+      "requirementsTitle": "What we're looking for",
+      "applyTitle": "Apply for this role",
+      "applySubtitle": "Submit the form below — we'll come back to you within 5 business days.",
+      "metaDepartment": "Department",
+      "metaLocation": "Location",
+      "metaType": "Employment type",
+      "metaCloses": "Apply by"
+    },
+    "form": {
+      "fullName": "Full name",
+      "fullNamePlaceholder": "Your full name",
+      "email": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "coverLetter": "Cover letter (optional)",
+      "coverLetterPlaceholder": "Tell us why you're a good fit for this role.",
+      "cv": "CV / Resume",
+      "cvHint": "PDF, DOC, or DOCX — up to 10 MB.",
+      "cvUploadLabel": "Upload CV",
+      "cvUploaded": "Uploaded:",
+      "cvReplace": "Replace",
+      "portfolioUrl": "Portfolio URL (optional)",
+      "linkedinUrl": "LinkedIn URL (optional)",
+      "submit": "Submit application",
+      "submitting": "Submitting…",
+      "success": "Application received. We'll be in touch soon.",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "errorRateLimited": "Too many submissions. Please try again in a few minutes.",
+      "errorValidation": "Please review the highlighted fields.",
+      "errorCvRequired": "Please upload your CV before submitting.",
+      "consent": "By submitting, you agree that BP Holding may store your data to evaluate your application."
+    }
+  },
+  "contractors": {
+    "metaTitle": "Contractor & supplier registration",
+    "metaDescription": "Register your company to be considered for BP Holding subcontract packages, supply contracts, and procurement opportunities across the Kingdom.",
+    "eyebrow": "Work with us",
+    "title": "Become a registered contractor or supplier",
+    "lead": "BP Holding works with vetted subcontractors, fabricators, suppliers, and service providers across engineering, structural works, finishing, and industrial trade. Submit your company profile and supporting documents — qualified vendors are added to our procurement shortlist.",
+    "formTitle": "Registration form",
+    "formSubtitle": "Complete every section. Required fields are marked with an asterisk.",
+    "benefits": {
+      "partnership": {
+        "title": "Long-term partnership",
+        "body": "We prefer recurring relationships over one-off bids. Vetted vendors are first in line for new packages."
+      },
+      "pipeline": {
+        "title": "Steady pipeline",
+        "body": "Our four sectors generate a consistent flow of subcontract and supply opportunities across the Kingdom."
+      },
+      "compliance": {
+        "title": "Clear compliance",
+        "body": "Saudi CR + VAT, valid Iqama for non-Saudi staff, and project insurance — we ask once, you keep on file."
+      }
+    },
+    "form": {
+      "sectionCompanyTitle": "Company information",
+      "sectionCompanySubtitle": "Legal name, registration numbers, and what your company does.",
+      "sectionContactTitle": "Primary contact",
+      "sectionContactSubtitle": "Who should we reach when an opportunity comes up?",
+      "sectionDocumentsTitle": "Supporting documents",
+      "sectionDocumentsSubtitle": "Commercial registration, VAT certificate, profile / capability statement, and references.",
+      "companyName": "Company name",
+      "companyNamePlaceholder": "Your registered legal name",
+      "crNumber": "Commercial registration (CR) number",
+      "crNumberPlaceholder": "1010XXXXXX",
+      "vatNumber": "VAT number",
+      "vatNumberPlaceholder": "3000XXXXXXXXXX3",
+      "country": "Country",
+      "countryPlaceholder": "Saudi Arabia",
+      "city": "City",
+      "cityPlaceholder": "Riyadh",
+      "specialtyEn": "Specialty (English)",
+      "specialtyEnPlaceholder": "e.g. MEP subcontractor, steel fabrication",
+      "specialtyAr": "Specialty (Arabic)",
+      "specialtyArPlaceholder": "مثل: مقاول كهروميكانيك",
+      "yearsExperience": "Years of experience",
+      "yearsExperiencePlaceholder": "8",
+      "website": "Website (optional)",
+      "contactName": "Contact name",
+      "contactNamePlaceholder": "Full name of primary contact",
+      "email": "Email",
+      "emailPlaceholder": "you@company.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "notes": "Anything else we should know? (optional)",
+      "notesPlaceholder": "Notable references, certifications, capacity, or specialisations.",
+      "documents": "Upload documents",
+      "documentsHint": "PDF, DOC, DOCX, JPG, or PNG — up to 10 MB each, 10 files max.",
+      "documentsUploadLabel": "Add files",
+      "documentsUploadedCount": "{count} file(s) attached",
+      "documentsRemove": "Remove",
+      "submit": "Submit registration",
+      "submitting": "Submitting…",
+      "success": "Registration received. Our procurement team will review your documents and respond shortly.",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "errorRateLimited": "Too many submissions. Please try again later.",
+      "errorValidation": "Please review the highlighted fields.",
+      "consent": "By submitting, you confirm that the information and documents provided are accurate and consent to BP Holding storing them for procurement evaluation."
+    }
+  },
+  "rfq": {
+    "metaTitle": "Request a quote",
+    "metaDescription": "Tell BP Holding about your project — engineering, construction, interior, or consulting. Our team responds within two business days.",
+    "eyebrow": "Start a project",
+    "title": "Request a quote",
+    "lead": "Share a few details about your project and we'll get back to you within two business days with the right team and a clear next step.",
+    "formTitle": "Project brief",
+    "formSubtitle": "All required fields are marked with an asterisk. Drawings and specs are welcome but optional.",
+    "highlights": {
+      "response": {
+        "title": "Two-day response",
+        "body": "A senior engineer reviews every brief and replies within two working days."
+      },
+      "scope": {
+        "title": "Right team, right scope",
+        "body": "We route your brief to the team — engineering, structural, interior, or trade — that fits the project."
+      },
+      "confidential": {
+        "title": "Confidential review",
+        "body": "Drawings, specs, and budgets shared here are reviewed only by the assigned team."
+      }
+    },
+    "form": {
+      "sectionContactTitle": "Your details",
+      "sectionContactSubtitle": "Who should we get back to?",
+      "sectionProjectTitle": "Project details",
+      "sectionProjectSubtitle": "A short description goes a long way — we'll follow up for the rest.",
+      "sectionAttachmentsTitle": "Attachments",
+      "sectionAttachmentsSubtitle": "Drawings, BOQs, specifications, references — optional but helpful.",
+      "fullName": "Full name",
+      "fullNamePlaceholder": "First and last name",
+      "email": "Email",
+      "emailPlaceholder": "you@company.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "company": "Company (optional)",
+      "companyPlaceholder": "Your company name, if applicable",
+      "projectType": "Project type",
+      "projectTypePlaceholder": "e.g. residential tower, office fit-out, MEP package",
+      "budget": "Budget range",
+      "budgetPlaceholder": "Select a range",
+      "budgetUnder100k": "Under SAR 100,000",
+      "budget100k500k": "SAR 100,000 – 500,000",
+      "budget500k1m": "SAR 500,000 – 1,000,000",
+      "budget1m5m": "SAR 1,000,000 – 5,000,000",
+      "budgetOver5m": "Over SAR 5,000,000",
+      "budgetUnspecified": "Not specified yet",
+      "location": "Project location",
+      "locationPlaceholder": "City or site address",
+      "startDate": "Target start date (optional)",
+      "description": "Project description",
+      "descriptionPlaceholder": "What are you trying to build, fit out, or supply? Include any constraints, timelines, or context that would help us scope.",
+      "attachments": "Upload files",
+      "attachmentsHint": "PDF, DOC, XLS, DWG, ZIP, JPG, or PNG — up to 15 MB each, 8 files max.",
+      "attachmentsUploadLabel": "Add files",
+      "attachmentsUploadedCount": "{count} file(s) attached",
+      "attachmentsRemove": "Remove",
+      "submit": "Submit request",
+      "submitting": "Submitting…",
+      "success": "Quote request received.",
+      "successDetail": "Reference {ref}. A senior engineer will review your brief and reply within two business days.",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "errorRateLimited": "Too many submissions. Please try again later.",
+      "errorValidation": "Please review the highlighted fields.",
+      "consent": "By submitting, you consent to BP Holding using these details and any uploaded files solely to evaluate and respond to your request."
+    }
+  },
+  "contact": {
+    "metaTitle": "Contact BP Holding",
+    "metaDescription": "Reach BP Holding's team in Riyadh and Jeddah — phone, email, and a direct contact form for general enquiries, partnerships, and media.",
+    "eyebrow": "Get in touch",
+    "title": "Contact our team",
+    "lead": "For project briefs, partnerships, careers, or media — send us a message and the right person will reply.",
+    "officesTitle": "Offices",
+    "channelsTitle": "Direct channels",
+    "rfqLink": "Have a project to scope? Use the quote request form for a faster response.",
+    "rfqLinkCta": "Request a quote",
+    "hq": {
+      "name": "Head office — Riyadh",
+      "address": "King Fahd Road, Riyadh, Saudi Arabia"
+    },
+    "branch": {
+      "name": "Branch — Jeddah",
+      "address": "Al-Tahlia Street, Jeddah, Saudi Arabia"
+    },
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "phone": "+966 11 000 0000",
+    "email": "info@bpholding.net",
+    "hoursLabel": "Hours",
+    "hours": "Sunday – Thursday, 9:00 – 17:00 (AST)",
+    "formTitle": "Send a message",
+    "formSubtitle": "We typically reply within one business day.",
+    "form": {
+      "fullName": "Full name",
+      "fullNamePlaceholder": "First and last name",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "subject": "Subject (optional)",
+      "subjectPlaceholder": "Partnership, media enquiry, general question…",
+      "message": "Message",
+      "messagePlaceholder": "How can we help?",
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "success": "Thanks — your message is on its way. We'll reply shortly.",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "errorRateLimited": "Too many messages. Please try again later.",
+      "errorValidation": "Please review the highlighted fields.",
+      "consent": "By submitting, you consent to BP Holding using these details to respond to your enquiry."
+    }
+  },
+  "certifications": {
+    "metaTitle": "Certifications & Compliance",
+    "metaDescription": "Quality, safety, and professional certifications held by BP Holding — verifiable credentials for clients and partners.",
+    "eyebrow": "Compliance",
+    "title": "Certifications & accreditations",
+    "lead": "We hold the certifications that matter for serious infrastructure work in the Kingdom — quality, environment, occupational safety, and professional membership. Each document is independently issued and renewable.",
+    "issuedLabel": "Issued",
+    "expiresLabel": "Valid until",
+    "issuerLabel": "Issuer",
+    "preview": "Preview",
+    "download": "Download",
+    "close": "Close",
+    "empty": "Certifications will appear here as they are issued."
+  },
+  "admin": {
+    "shell": {
+      "brand": "BP Holding",
+      "sectionMain": "Operations",
+      "sectionContent": "Submissions",
+      "sectionSettings": "System",
+      "roleAdmin": "Admin console",
+      "signOut": "Sign out",
+      "signingOut": "Signing out…",
+      "collapse": "Collapse",
+      "expand": "Expand",
+      "openMenu": "Open navigation",
+      "closeMenu": "Close navigation"
+    },
+    "nav": {
+      "overview": "Overview",
+      "projects": "Projects",
+      "studio": "Portfolio studio",
+      "careers": "Job postings",
+      "jobApplications": "Job applications",
+      "contractors": "Contractor registrations",
+      "rfqs": "RFQs",
+      "messages": "Contact messages",
+      "certifications": "Certifications",
+      "content": "Site content",
+      "settings": "Settings"
+    },
+    "breadcrumbs": {
+      "admin": "Admin"
+    },
+    "overview": {
+      "title": "Overview",
+      "lead": "Activity across submissions, content, and operations.",
+      "counters": {
+        "rfqsNew": "New RFQs",
+        "rfqsNewDesc": "Quote requests waiting for first response.",
+        "appsPending": "Pending applications",
+        "appsPendingDesc": "Job applications in new or reviewing state.",
+        "contractorsPending": "Pending contractor registrations",
+        "contractorsPendingDesc": "Supplier and contractor submissions awaiting review.",
+        "messagesUnread": "Unread messages",
+        "messagesUnreadDesc": "Contact-form messages not yet opened.",
+        "projectsActive": "Active projects",
+        "projectsActiveDesc": "Projects published on the public portfolio.",
+        "careersOpen": "Open positions",
+        "careersOpenDesc": "Job postings currently accepting applications.",
+        "openCta": "Open"
+      },
+      "trends": {
+        "title": "Submission trends",
+        "subtitle": "Daily volume across submission channels — last '{days}' days.",
+        "rfqs": "RFQs",
+        "messages": "Messages",
+        "jobApplications": "Job applications",
+        "contractors": "Contractors",
+        "empty": "No submissions in the last 30 days yet."
+      },
+      "recent": {
+        "title": "Recent activity",
+        "subtitle": "The latest submissions across each channel.",
+        "tabRfqs": "RFQs",
+        "tabMessages": "Messages",
+        "tabJobApps": "Job applications",
+        "tabContractors": "Contractors",
+        "empty": "Nothing here yet.",
+        "openLabel": "Open"
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "metaTitle": "Sign in",
+      "metaDescription": "Sign in to the BP Holding admin or employee portal.",
+      "eyebrow": "Secure area",
+      "title": "Sign in",
+      "lead": "Use the credentials issued by the IT team to access the admin or employee portal.",
+      "internalOnly": "This is an internal portal — there is no public sign-up. Contact IT for access.",
+      "form": {
+        "email": "Work email",
+        "emailPlaceholder": "you@bpholding.net",
+        "password": "Password",
+        "passwordPlaceholder": "••••••••",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "submit": "Sign in",
+        "submitting": "Signing in…",
+        "errorInvalidCredentials": "The email or password you entered is incorrect.",
+        "errorRateLimited": "Too many attempts. Try again in a few minutes.",
+        "errorValidation": "Please enter a valid email and password.",
+        "errorGeneric": "Something went wrong. Please try again."
+      }
+    },
+    "changePassword": {
+      "metaTitle": "Change password",
+      "metaDescription": "Set a new password for your BP Holding account.",
+      "eyebrow": "Account security",
+      "title": "Set a new password",
+      "lead": "For your safety, please replace the temporary password issued by IT with one only you know.",
+      "form": {
+        "currentPassword": "Current password",
+        "currentPasswordPlaceholder": "Temporary password",
+        "newPassword": "New password",
+        "newPasswordPlaceholder": "At least 10 characters",
+        "confirmPassword": "Confirm new password",
+        "confirmPasswordPlaceholder": "Repeat new password",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "submit": "Update password",
+        "submitting": "Updating…",
+        "ruleMin": "At least 10 characters.",
+        "ruleLower": "At least one lowercase letter.",
+        "ruleUpper": "At least one uppercase letter.",
+        "ruleDigit": "At least one number.",
+        "errorInvalidCurrent": "Your current password is incorrect.",
+        "errorMismatch": "The two new passwords don't match.",
+        "errorSameAsCurrent": "Your new password must be different from the current one.",
+        "errorValidation": "New password doesn't meet the requirements.",
+        "errorGeneric": "Something went wrong. Please try again.",
+        "errorNotAuthenticated": "Your session has expired. Please sign in again."
+      }
+    }
+  },
+  "privacy": {
+    "metaTitle": "Privacy Policy",
+    "metaDescription": "How BP Holding collects, uses, and protects your personal information when you submit a request for quote, application, or enquiry.",
+    "eyebrow": "Legal",
+    "title": "Privacy policy",
+    "lead": "How we handle the personal information you share with us — written in plain language and reviewed against the Saudi Personal Data Protection Law."
+  },
+  "terms": {
+    "metaTitle": "Terms of Service",
+    "metaDescription": "The terms that govern your use of bpholding.net and the submissions you make through it.",
+    "eyebrow": "Legal",
+    "title": "Terms of service",
+    "lead": "The ground rules for using this Site, what you may submit through it, and the limits of our responsibility."
+  },
+  "companyProfile": {
+    "metaTitle": "Company Profile",
+    "metaDescription": "Download the BP Holding company profile — capabilities, sectors, leadership, and a selection of delivered work across the Kingdom.",
+    "eyebrow": "Company profile",
+    "title": "BP Holding company profile",
+    "lead": "A bilingual overview of who we are, what we deliver, and how we work — capabilities across engineering, trade, industry, and services, with case studies from across Saudi Arabia.",
+    "downloadCta": "Download PDF",
+    "contactCta": "Talk to our team",
+    "viewerTitle": "Read in browser",
+    "viewerSubtitle": "Page through the profile here, or download the full PDF for offline use.",
+    "ctaTitle": "Ready to scope a project?",
+    "ctaBody": "If you have a brief, request a quote and we'll respond with a tailored proposal within two business days.",
+    "ctaPrimary": "Request a quote",
+    "ctaSecondary": "Contact us",
+    "viewer": {
+      "loading": "Loading document…",
+      "loadError": "We couldn't load the profile. Try again, or download the PDF directly.",
+      "retry": "Retry",
+      "pageOf": "'{current}' / '{total}'",
+      "previous": "Previous page",
+      "next": "Next page",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "download": "Download",
+      "openExternal": "Open in new tab"
+    }
+  },
+  "studio": {
+    "metaTitle": "Portfolio Studio",
+    "metaDescription": "Behind-the-scenes photography and video from BP Holding's project sites and finished work.",
+    "eyebrow": "Studio",
+    "title": "From the field",
+    "lead": "Photography and video from active project sites, finished handovers, and the team behind the work.",
+    "previousImage": "Previous",
+    "nextImage": "Next",
+    "closeLightbox": "Close",
+    "video": "Video"
+  },
+  "portfolio": {
+    "metaTitle": "Portfolio",
+    "metaDescription": "Selected projects delivered by BP Holding across the Kingdom — residential, structural, interior, consulting, and general contracting.",
+    "eyebrow": "Selected work",
+    "title": "Portfolio",
+    "lead": "A sample of recently delivered engagements. Filter by sector, year, or location.",
+    "filters": {
+      "sector": "Sector",
+      "year": "Year",
+      "location": "Location",
+      "all": "All",
+      "reset": "Reset filters",
+      "noResults": "No projects match your filters."
+    },
+    "card": {
+      "view": "View project"
+    },
+    "detail": {
+      "back": "All projects",
+      "overviewTitle": "Project overview",
+      "highlightsTitle": "Project highlights",
+      "galleryTitle": "Gallery",
+      "relatedTitle": "Related projects",
+      "metaSector": "Sector",
+      "metaLocation": "Location",
+      "metaYear": "Year",
+      "metaClient": "Client"
+    },
+    "ctaTitle": "Have a similar project in mind?",
+    "ctaButton": "Request a quote"
+  },
+  "services": {
+    "metaTitle": "Services",
+    "metaDescription": "Engineering, structural, interior, consulting, and general contracting — five disciplines, one accountable partner.",
+    "eyebrow": "What we do",
+    "title": "Services",
+    "lead": "Five disciplines, fully integrated. Pick one or chain them — the same team and standards apply across every engagement.",
+    "exploreLabel": "Explore",
+    "viewAllProjects": "All projects in this sector",
+    "ctaTitle": "Ready to scope a project?",
+    "ctaButton": "Request a quote",
+    "detail": {
+      "highlightsTitle": "What you get",
+      "relatedTitle": "Recent projects in this discipline",
+      "relatedEmpty": "Recent projects will appear here as we publish them.",
+      "backToServices": "All services"
+    }
+  },
+  "about": {
+    "metaTitle": "About BP Holding",
+    "metaDescription": "BP Holding is a Saudi partnership delivering integrated engineering, contracting, trade, industry, and services solutions across the Kingdom.",
+    "eyebrow": "About us",
+    "title": "We're a Saudi holding group built around one promise: integrated solutions, single accountability.",
+    "lead": "Founded in 2021 in Riyadh, Business Pioneers Holding operates across four interconnected sectors — engineering, trade, industry, and services — to deliver value that no single discipline could provide alone.",
+    "timelineTitle": "The journey so far",
+    "timelineSubtitle": "Five years of building infrastructure, partnerships, and an integrated business ecosystem in Saudi Arabia.",
+    "milestones": {
+      "y2021": {
+        "title": "2021",
+        "heading": "BP Holding founded in Riyadh",
+        "body": "The group is incorporated as a partnership headquartered on King Fahd Road, with engineering and contracting as its founding disciplines."
+      },
+      "y2022": {
+        "title": "2022",
+        "heading": "First flagship project delivered",
+        "body": "A mixed-use development is handed over to its owner — combining retail, office, and residential blocks under one masterplan."
+      },
+      "y2023": {
+        "title": "2023",
+        "heading": "Western region expansion",
+        "body": "A Jeddah branch is opened on Al-Tahlia Street to serve clients across the western region of the Kingdom."
+      },
+      "y2024": {
+        "title": "2024",
+        "heading": "Vertical integration",
+        "body": "The group expands into structural concrete works, interior finishing, and engineering consulting — covering every phase of project delivery."
+      },
+      "y2025": {
+        "title": "2025",
+        "heading": "PEG-N is launched",
+        "body": "The Professional Engineers Global Network is launched as an open platform connecting engineering professionals and fostering cross-border collaboration."
+      },
+      "y2026": {
+        "title": "2026",
+        "heading": "Digital ecosystem launch",
+        "body": "A bilingual digital platform unifies the corporate site, RFQ pipeline, contractor onboarding, careers, store, HR portal, PEG-N, and community under one ecosystem."
+      }
+    },
+    "missionTitle": "Our mission",
+    "missionBody": "To deliver high-quality, fully integrated engineering, contracting, and business solutions that move Saudi Arabia's built environment forward — under a single point of accountability.",
+    "visionTitle": "Our vision",
+    "visionBody": "To be the most trusted partner in the Kingdom for clients who refuse to choose between speed, quality, and integrity.",
+    "leadershipTitle": "Leadership",
+    "leadershipName": "Ahmed Shalaby",
+    "leadershipRole": "Projects Director & Managing Partner",
+    "leadershipBio": "19+ years of experience in engineering and construction management. Founder of PEG-N (Professional Engineers Global Network), a global platform connecting engineering professionals and fostering collaboration worldwide.",
+    "sectorsTitle": "Four integrated sectors",
+    "sectorsSubtitle": "We don't pick one — we coordinate all four under one operating model.",
+    "sectorEngineering": "Engineering",
+    "sectorEngineeringBody": "Design, structural, and project-management consulting.",
+    "sectorTrade": "Trade",
+    "sectorTradeBody": "Smooth and efficient trading operations across material categories.",
+    "sectorIndustry": "Industry",
+    "sectorIndustryBody": "High-quality production and continuous, flexible support.",
+    "sectorServices": "Services",
+    "sectorServicesBody": "Integrated services that bind the other three sectors together.",
+    "branchesTitle": "Where we work",
+    "branchesSubtitle": "Two branches, one team.",
+    "branchHQTitle": "Headquarters",
+    "branchHQAddress": "Riyadh, King Fahd Road",
+    "branchWesternTitle": "Western region branch",
+    "branchWesternAddress": "Jeddah, Al-Tahlia Street",
+    "ctaTitle": "Have a project to discuss?",
+    "ctaButton": "Request a quote"
+  },
+  "preview": {
+    "step": "Step 12 · /en",
+    "title": "Layout shell",
+    "swatches": "Brand swatches",
+    "tokens": "Tokens (theme-aware)",
+    "typography": "Typography",
+    "buttons": "Buttons",
+    "switchLocale": "العربية",
+    "currentLocale": "English"
+  },
+  "theme": {
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  }
+}

@@ -1,0 +1,58 @@
+-- Sample data: 5 services + 6 published projects + a few media + testimonials.
+-- Idempotent: uses ON CONFLICT (slug) DO NOTHING.
+
+insert into public.services (slug, title_en, title_ar, summary_en, summary_ar, icon, sort_order, status) values
+  ('residential-construction', 'Residential Construction', 'الإنشاءات السكنية',
+   'Turn-key villas and residential complexes built to Saudi Building Code standards.',
+   'إنشاء الفلل والمجمعات السكنية بمعايير كود البناء السعودي.',
+   'home', 10, 'published'),
+  ('structural-works', 'Structural & Concrete Works', 'الأعمال الإنشائية والخرسانية',
+   'Foundations, frames, and reinforced concrete for buildings and infrastructure.',
+   'الأساسات والهياكل والخرسانة المسلحة للمباني والبنية التحتية.',
+   'building-2', 20, 'published'),
+  ('interior-finishing', 'Interior Finishing & Design', 'التشطيب والتصميم الداخلي',
+   'Premium interior finishing, joinery, and bespoke design for executive spaces.',
+   'تشطيبات داخلية فاخرة ونجارة وتصميم مخصص للمساحات التنفيذية.',
+   'paintbrush', 30, 'published'),
+  ('engineering-consulting', 'Engineering Consulting', 'الاستشارات الهندسية',
+   'Architectural, structural, and project-management consulting from concept to delivery.',
+   'استشارات معمارية وإنشائية وإدارة مشاريع من الفكرة إلى التسليم.',
+   'compass', 40, 'published'),
+  ('general-contracting', 'General Contracting', 'المقاولات العامة',
+   'Single point of accountability for multi-disciplinary project delivery.',
+   'نقطة مساءلة واحدة لتسليم المشاريع متعددة التخصصات.',
+   'hard-hat', 50, 'published')
+on conflict (slug) do nothing;
+
+insert into public.projects (slug, title_en, title_ar, summary_en, summary_ar, sector, location_en, location_ar, year, cover_image_path, is_featured, sort_order, status) values
+  ('riyadh-residential-tower', 'Riyadh Residential Tower', 'برج الرياض السكني',
+   'A 24-storey luxury residential tower delivered turn-key in 22 months.',
+   'برج سكني فاخر مكون من 24 طابقاً تم تسليمه جاهزاً خلال 22 شهراً.',
+   'residential', 'Riyadh', 'الرياض', 2024,
+   '/public/projects/placeholder-1.jpg', true, 10, 'published'),
+  ('jeddah-corporate-hq', 'Jeddah Corporate Headquarters', 'المقر الرئيسي بجدة',
+   'Class-A office headquarters with sustainable LEED-aligned design.',
+   'مقر رئيسي من الفئة (أ) بتصميم مستدام يتوافق مع معايير LEED.',
+   'general-contracting', 'Jeddah', 'جدة', 2024,
+   '/public/projects/placeholder-2.jpg', true, 20, 'published'),
+  ('king-fahd-villa', 'King Fahd Road Villa', 'فيلا طريق الملك فهد',
+   'Custom-designed luxury villa with imported interior finishing.',
+   'فيلا فاخرة بتصميم خاص وتشطيبات داخلية مستوردة.',
+   'interior-finishing', 'Riyadh', 'الرياض', 2023,
+   '/public/projects/placeholder-3.jpg', true, 30, 'published'),
+  ('industrial-warehouse-complex', 'Industrial Warehouse Complex', 'مجمع المستودعات الصناعية',
+   '40,000 m² industrial complex with reinforced concrete frame.',
+   'مجمع صناعي بمساحة 40,000 م² بهيكل خرساني مسلح.',
+   'structural', 'Dammam', 'الدمام', 2023,
+   '/public/projects/placeholder-4.jpg', true, 40, 'published'),
+  ('mixed-use-development', 'Mixed-Use Development', 'تطوير متعدد الاستخدامات',
+   'Retail, office, and residential blocks unified under one masterplan.',
+   'كتل تجارية ومكتبية وسكنية موحدة تحت مخطط رئيسي واحد.',
+   'general-contracting', 'Riyadh', 'الرياض', 2022,
+   '/public/projects/placeholder-5.jpg', true, 50, 'published'),
+  ('engineering-consultancy-airport', 'Airport Terminal Consultancy', 'استشارات صالة المطار',
+   'Structural and project-management consulting for a regional terminal.',
+   'استشارات إنشائية وإدارة مشاريع لصالة مطار إقليمية.',
+   'engineering-consulting', 'Riyadh', 'الرياض', 2022,
+   '/public/projects/placeholder-6.jpg', true, 60, 'published')
+on conflict (slug) do nothing;
