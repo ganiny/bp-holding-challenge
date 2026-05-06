@@ -1,12 +1,17 @@
+
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/i18n/navigation";
 import { IconArrowRight, IconArrowLeft, IconCheck } from "@tabler/icons-react";
-import { SERVICE_PLACEHOLDER_IMAGE, FALLBACK_PLACEHOLDER } from "@/data/service-images";
+import {
+  SERVICE_PLACEHOLDER_IMAGE,
+  FALLBACK_PLACEHOLDER,
+} from "@/data/service-images";
+import { Image, ImageKitProvider } from "@imagekit/next";
 
 /** Slug → which `projects.sector` values to surface in the related-projects list. */
 const SERVICE_SECTOR_FILTER: Record<string, string[]> = {
@@ -16,12 +21,6 @@ const SERVICE_SECTOR_FILTER: Record<string, string[]> = {
   "engineering-consulting": ["engineering-consulting"],
   "general-contracting": ["general-contracting"],
 };
-
-export async function generateStaticParams() {
-  // We could query Supabase here to pre-render every published service.
-  // Keeping it dynamic for now so admins don't need a redeploy after publishing.
-  return [];
-}
 
 export async function generateMetadata({
   params,
@@ -41,7 +40,8 @@ export async function generateMetadata({
 
   return {
     title: locale === "ar" ? service.title_ar : service.title_en,
-    description: (locale === "ar" ? service.summary_ar : service.summary_en) ?? undefined,
+    description:
+      (locale === "ar" ? service.summary_ar : service.summary_en) ?? undefined,
   };
 }
 
@@ -67,8 +67,10 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   const title = locale === "ar" ? service.title_ar : service.title_en;
-  const summary = (locale === "ar" ? service.summary_ar : service.summary_en) ?? "";
-  const description = (locale === "ar" ? service.description_ar : service.description_en) ?? "";
+  const summary =
+    (locale === "ar" ? service.summary_ar : service.summary_en) ?? "";
+  const description =
+    (locale === "ar" ? service.description_ar : service.description_en) ?? "";
   const cover = SERVICE_PLACEHOLDER_IMAGE[slug] ?? FALLBACK_PLACEHOLDER;
 
   // Related projects — match this service's sector(s).
@@ -76,7 +78,9 @@ export default async function ServiceDetailPage({
   const { data: relatedProjects } = sectors.length
     ? await supabase
         .from("projects")
-        .select("slug,title_en,title_ar,summary_en,summary_ar,location_en,location_ar,year")
+        .select(
+          "slug,title_en,title_ar,summary_en,summary_ar,location_en,location_ar,year",
+        )
         .eq("status", "published")
         .in("sector", sectors)
         .order("sort_order", { ascending: true })
@@ -84,32 +88,37 @@ export default async function ServiceDetailPage({
     : { data: [] as never[] };
 
   // Static highlights — copy that complements every service card.
-  const highlights = locale === "ar"
-    ? [
-        "نقطة مساءلة واحدة من البداية حتى التسليم",
-        "التزام بكود البناء السعودي وأفضل الممارسات الدولية",
-        "تواصل أسبوعي شفّاف وتقارير تقدّم منتظمة",
-        "ضمان شامل بعد التسليم وفترة دعم ممتدة",
-      ]
-    : [
-        "Single point of accountability from kickoff to handover",
-        "Saudi Building Code compliance + international best practice",
-        "Transparent weekly comms and progress reporting",
-        "Post-delivery warranty and extended support window",
-      ];
+  const highlights =
+    locale === "ar"
+      ? [
+          "نقطة مساءلة واحدة من البداية حتى التسليم",
+          "التزام بكود البناء السعودي وأفضل الممارسات الدولية",
+          "تواصل أسبوعي شفّاف وتقارير تقدّم منتظمة",
+          "ضمان شامل بعد التسليم وفترة دعم ممتدة",
+        ]
+      : [
+          "Single point of accountability from kickoff to handover",
+          "Saudi Building Code compliance + international best practice",
+          "Transparent weekly comms and progress reporting",
+          "Post-delivery warranty and extended support window",
+        ];
 
   return (
     <main className="flex flex-1 flex-col">
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-brand-navy text-brand-cream">
-        <Image
-          src={cover}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-30"
-        />
+        <ImageKitProvider
+          urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
+        >
+          <Image
+            src={cover}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-30"
+            alt="cover image"
+          />
+        </ImageKitProvider>
         <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/80 via-brand-navy/85 to-brand-navy" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <Link
@@ -134,10 +143,11 @@ export default async function ServiceDetailPage({
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid gap-12 lg:grid-cols-3">
           <div className="lg:col-span-2 space-y-4 text-base leading-relaxed text-foreground/90">
-            {description
-              ? description.split(/\n+/).map((para, i) => <p key={i}>{para}</p>)
-              : <p className="text-muted-foreground">{summary}</p>
-            }
+            {description ? (
+              description.split(/\n+/).map((para, i) => <p key={i}>{para}</p>)
+            ) : (
+              <p className="text-muted-foreground">{summary}</p>
+            )}
           </div>
           <aside className="space-y-4">
             <h2 className="text-xs font-mono uppercase tracking-[0.24em] text-brand-gold">
@@ -196,8 +206,14 @@ export default async function ServiceDetailPage({
 
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
-        <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t("ctaTitle")}</h2>
-        <Button asChild size="lg" className="mt-8 bg-brand-navy text-brand-cream hover:bg-brand-navy-hover">
+        <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+          {t("ctaTitle")}
+        </h2>
+        <Button
+          asChild
+          size="lg"
+          className="mt-8 bg-brand-navy text-brand-cream hover:bg-brand-navy-hover"
+        >
           <Link href="/rfq">
             {t("ctaButton")}
             <IconArrowRight className="ms-2 size-4 rtl:rotate-180" />
