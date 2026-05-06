@@ -38,7 +38,7 @@ export function FeaturedProjects({
           <p className="mt-3 text-muted-foreground">{t("subtitle")}</p>
         </header>
 
-        <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <ProjectTile
               key={project.slug}
@@ -69,18 +69,18 @@ function ProjectTile({
   viewLabel: string;
 }) {
   return (
-    <CardContainer containerClassName="!py-2" className="w-full">
+    <CardContainer containerClassName="!py-2" className="">
       <CardBody className="!h-auto !w-full max-w-md rounded-xl border border-border bg-card p-6 transition-shadow hover:shadow-2xl hover:border-brand-gold/40">
         <CardItem
           translateZ={90}
-          className="aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-brand-navy via-brand-navy/85 to-brand-navy-hover"
+          className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-brand-navy via-brand-navy/85 to-brand-navy-hover"
         >
           <ImageKitProvider urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}>
             <Image
               src={project.cover}
-              width={500}
-              height={500}
+              fill
               alt="cover image"
+              className="object-cover"
             />
           </ImageKitProvider>
           <div className="flex h-full w-full items-end p-4">
