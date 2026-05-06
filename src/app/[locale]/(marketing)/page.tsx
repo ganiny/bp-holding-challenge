@@ -28,7 +28,7 @@ export default async function Home({
     .eq("status", "published")
     .eq("is_featured", true)
     .order("sort_order", { ascending: true })
-    .limit(6);
+    .limit(9);
 
   const projects: FeaturedProject[] = (rawProjects ?? []).map((p) => ({
     slug: p.slug,

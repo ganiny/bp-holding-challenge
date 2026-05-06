@@ -262,12 +262,12 @@
       "attachments": "Upload files",
       "attachmentsHint": "PDF, DOC, XLS, DWG, ZIP, JPG, or PNG — up to 15 MB each, 8 files max.",
       "attachmentsUploadLabel": "Add files",
-      "attachmentsUploadedCount": "{count} file(s) attached",
+      "attachmentsUploadedCount": "'{count}' file(s) attached",
       "attachmentsRemove": "Remove",
       "submit": "Submit request",
       "submitting": "Submitting…",
       "success": "Quote request received.",
-      "successDetail": "Reference {ref}. A senior engineer will review your brief and reply within two business days.",
+      "successDetail": "Reference '{ref}'. A senior engineer will review your brief and reply within two business days.",
       "errorGeneric": "Something went wrong. Please try again.",
       "errorRateLimited": "Too many submissions. Please try again later.",
       "errorValidation": "Please review the highlighted fields.",
@@ -400,6 +400,655 @@
         "tabContractors": "Contractors",
         "empty": "Nothing here yet.",
         "openLabel": "Open"
+      }
+    },
+    "projectsAdmin": {
+      "title": "Projects",
+      "lead": "Create, publish, and curate the portfolio shown on the public site.",
+      "newProject": "New project",
+      "search": "Search by title, slug, sector, client…",
+      "filterStatus": "Status",
+      "statusAll": "All statuses",
+      "status": {
+        "draft": "Draft",
+        "published": "Published",
+        "archived": "Archived"
+      },
+      "table": {
+        "cover": "Cover",
+        "title": "Title",
+        "sector": "Sector",
+        "year": "Year",
+        "status": "Status",
+        "media": "Media",
+        "featured": "Featured",
+        "actions": "Actions"
+      },
+      "empty": "No projects match your filters.",
+      "actions": {
+        "edit": "Edit",
+        "publish": "Publish",
+        "unpublish": "Move to draft",
+        "archive": "Archive",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      },
+      "confirmDelete": {
+        "title": "Delete this project?",
+        "body": "Deleting removes the project and all its gallery items. This cannot be undone.",
+        "cta": "Yes, delete"
+      },
+      "drawer": {
+        "createTitle": "New project",
+        "editTitle": "Edit project",
+        "subtitle": "Bilingual content powers both the English and Arabic portfolio pages."
+      },
+      "form": {
+        "slug": "URL slug",
+        "slugHint": "Lowercase letters, digits, and hyphens only.",
+        "titleEn": "Title (English)",
+        "titleAr": "Title (Arabic)",
+        "summaryEn": "Summary (English)",
+        "summaryAr": "Summary (Arabic)",
+        "descriptionEn": "Description (English)",
+        "descriptionAr": "Description (Arabic)",
+        "sector": "Sector",
+        "client": "Client",
+        "locationEn": "Location (English)",
+        "locationAr": "Location (Arabic)",
+        "year": "Year",
+        "status": "Status",
+        "isFeatured": "Featured on home page",
+        "sortOrder": "Sort order",
+        "coverImage": "Cover image",
+        "coverImageHint": "Used as the card thumbnail and detail-page hero. Recommended 16:9, ≥ 1600 px wide.",
+        "coverImageAdd": "Add cover",
+        "coverImageReplace": "Replace cover",
+        "coverImageRemove": "Remove",
+        "gallery": "Gallery",
+        "galleryHint": "Up to 40 images. Drag to reorder. Captions are bilingual and optional.",
+        "galleryAdd": "Add images",
+        "galleryRemove": "Remove",
+        "captionEn": "Caption (English)",
+        "captionAr": "Caption (Arabic)",
+        "save": "Save project",
+        "saving": "Saving…"
+      },
+      "toast": {
+        "created": "Project created.",
+        "updated": "Project updated.",
+        "deleted": "Project deleted.",
+        "statusUpdated": "Project status updated."
+      },
+      "errors": {
+        "validation": "Please review the highlighted fields.",
+        "slugConflict": "Another project already uses this slug.",
+        "unauthorized": "Your session has expired. Please sign in again.",
+        "generic": "Something went wrong. Please try again."
+      },
+      "featured": {
+        "yes": "Featured",
+        "no": "Standard"
+      }
+    },
+    "studioAdmin": {
+      "title": "Portfolio studio",
+      "lead": "Bulk-upload field photography and video, organise with tags, and curate the order shown on the public Studio page.",
+      "uploadTitle": "Upload media",
+      "uploadSubtitle": "Tag and set visibility before confirming. Files appear at the end of the order.",
+      "uploadAdd": "Choose files",
+      "uploadVisibility": "Visibility",
+      "uploadVisibilityPublic": "Public",
+      "uploadVisibilityPrivate": "Private",
+      "uploadTags": "Tags",
+      "uploadTagsHint": "Comma-separated, lowercase. Used both for filtering here and (later) on the public gallery.",
+      "uploadTagsPlaceholder": "e.g. site, finishing, riyadh",
+      "uploadStaged": "'{count}' file(s) ready",
+      "uploadConfirm": "Add to gallery",
+      "uploadConfirming": "Adding…",
+      "uploadDiscard": "Discard",
+      "filterTags": "Tag",
+      "filterAll": "All",
+      "filterVisibility": "Visibility",
+      "reorder": "Reorder",
+      "reorderHint": "Use the arrows to change the order, then save.",
+      "reorderSave": "Save order",
+      "reorderSaving": "Saving…",
+      "reorderCancel": "Cancel",
+      "empty": "No media yet. Upload a few photos or a short video to get started.",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirmDeleteTitle": "Remove this media item?",
+      "confirmDeleteBody": "The file remains in storage but disappears from the gallery. This cannot be undone from the admin.",
+      "confirmDeleteCta": "Yes, remove",
+      "cancel": "Cancel",
+      "editTitle": "Edit media",
+      "editSubtitle": "Update captions, tags, or visibility.",
+      "formCaptionEn": "Caption (English)",
+      "formCaptionAr": "Caption (Arabic)",
+      "formTags": "Tags",
+      "formTagsHint": "Comma-separated, lowercase.",
+      "formVisibility": "Visibility",
+      "save": "Save",
+      "saving": "Saving…",
+      "successCreated": "Media added to the gallery.",
+      "successUpdated": "Media updated.",
+      "successDeleted": "Media removed.",
+      "successReordered": "New order saved.",
+      "errorValidation": "Please review the highlighted fields.",
+      "errorUnauthorized": "Your session has expired. Please sign in again.",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "visibilityPublic": "Public",
+      "visibilityPrivate": "Private"
+    },
+    "careersAdmin": {
+      "title": "Job postings",
+      "lead": "Create, edit, and curate the open roles shown on the public careers page.",
+      "newCareer": "New posting",
+      "search": "Search by title, slug, department, location…",
+      "filterStatus": "Status",
+      "statusAll": "All statuses",
+      "status": {
+        "draft": "Draft",
+        "open": "Open",
+        "closed": "Closed"
+      },
+      "table": {
+        "title": "Title",
+        "department": "Department",
+        "location": "Location",
+        "type": "Type",
+        "status": "Status",
+        "closes": "Closes",
+        "applications": "Applications",
+        "actions": "Actions"
+      },
+      "empty": "No postings match your filters.",
+      "actions": {
+        "edit": "Edit",
+        "open": "Mark open",
+        "close": "Close",
+        "unpublish": "Move to draft",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      },
+      "confirmDelete": {
+        "title": "Delete this posting?",
+        "body": "Deleting removes the posting. Existing applications stay in the database but lose their reference to the role.",
+        "cta": "Yes, delete"
+      },
+      "drawer": {
+        "createTitle": "New posting",
+        "editTitle": "Edit posting",
+        "subtitle": "Bilingual content powers both the English and Arabic careers pages."
+      },
+      "form": {
+        "slug": "URL slug",
+        "slugHint": "Lowercase letters, digits, and hyphens only.",
+        "titleEn": "Title (English)",
+        "titleAr": "Title (Arabic)",
+        "departmentEn": "Department (English)",
+        "departmentAr": "Department (Arabic)",
+        "locationEn": "Location (English)",
+        "locationAr": "Location (Arabic)",
+        "typeEn": "Employment type (English)",
+        "typeAr": "Employment type (Arabic)",
+        "descriptionEn": "Description (English)",
+        "descriptionAr": "Description (Arabic)",
+        "requirementsEn": "Requirements (English)",
+        "requirementsAr": "Requirements (Arabic)",
+        "status": "Status",
+        "closesAt": "Application deadline",
+        "closesAtHint": "Optional. The role will still appear until you close it manually.",
+        "save": "Save posting",
+        "saving": "Saving…"
+      },
+      "toast": {
+        "created": "Posting created.",
+        "updated": "Posting updated.",
+        "deleted": "Posting deleted.",
+        "statusUpdated": "Posting status updated."
+      },
+      "errors": {
+        "validation": "Please review the highlighted fields.",
+        "slugConflict": "Another posting already uses this slug.",
+        "unauthorized": "Your session has expired. Please sign in again.",
+        "generic": "Something went wrong. Please try again."
+      },
+      "noCloseDate": "No deadline"
+    },
+    "jobApplicationsAdmin": {
+      "title": "Job applications",
+      "lead": "Review candidates, open CVs, move them through the pipeline, and export filtered lists for sharing.",
+      "search": "Search by name, email, phone, or role…",
+      "filterStatus": "Status",
+      "filterRole": "Role",
+      "filterAll": "All",
+      "exportCsv": "Export CSV",
+      "status": {
+        "new": "New",
+        "reviewing": "Reviewing",
+        "shortlisted": "Shortlisted",
+        "rejected": "Rejected",
+        "hired": "Hired"
+      },
+      "table": {
+        "candidate": "Candidate",
+        "role": "Role",
+        "submitted": "Submitted",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "empty": "No applications match your filters.",
+      "actions": {
+        "view": "View",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "openCv": "Open CV (signed)",
+        "openingCv": "Opening…",
+        "saveNotes": "Save notes",
+        "savingNotes": "Saving…",
+        "notesUnchanged": "Notes saved"
+      },
+      "confirmDelete": {
+        "title": "Delete this application?",
+        "body": "The applicant's record is removed from the database. The CV file remains in storage.",
+        "cta": "Yes, delete"
+      },
+      "drawer": {
+        "title": "Application detail",
+        "subtitle": "Open the CV in a new tab, update the pipeline status, or capture private review notes."
+      },
+      "fields": {
+        "email": "Email",
+        "phone": "Phone",
+        "role": "Applied for",
+        "portfolio": "Portfolio",
+        "linkedin": "LinkedIn",
+        "coverLetter": "Cover letter",
+        "status": "Status",
+        "notes": "Internal notes",
+        "notesPlaceholder": "Visible only to admins. Capture interview impressions, follow-up reminders, or shortlisting rationale."
+      },
+      "toast": {
+        "statusUpdated": "Status updated.",
+        "notesUpdated": "Notes saved.",
+        "deleted": "Application deleted."
+      },
+      "errors": {
+        "cvNotFound": "We couldn't find the CV file. It may have been removed from storage.",
+        "unauthorized": "Your session has expired. Please sign in again.",
+        "generic": "Something went wrong. Please try again."
+      },
+      "notProvided": "Not provided",
+      "unknownRole": "Speculative / unknown role",
+      "csv": {
+        "id": "ID",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "role": "Role",
+        "status": "Status",
+        "submitted": "Submitted",
+        "portfolio": "Portfolio URL",
+        "linkedin": "LinkedIn URL"
+      }
+    },
+    "contractorsAdmin": {
+      "title": "Contractor & supplier registrations",
+      "lead": "Vet incoming registrations, open supporting documents, move them through the pipeline, and export filtered lists for procurement.",
+      "search": "Search by company, contact, email, CR, VAT, specialty…",
+      "filterStatus": "Status",
+      "filterAll": "All",
+      "exportCsv": "Export CSV",
+      "status": {
+        "new": "New",
+        "reviewing": "Reviewing",
+        "approved": "Approved",
+        "rejected": "Rejected"
+      },
+      "table": {
+        "company": "Company",
+        "contact": "Contact",
+        "specialty": "Specialty",
+        "location": "Location",
+        "submitted": "Submitted",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "empty": "No registrations match your filters.",
+      "actions": {
+        "view": "View",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "openDocument": "Open",
+        "openingDocument": "Opening…",
+        "saveNotes": "Save notes",
+        "savingNotes": "Saving…",
+        "notesUnchanged": "Notes saved"
+      },
+      "confirmDelete": {
+        "title": "Delete this registration?",
+        "body": "The registration record is removed from the database. The uploaded documents remain in storage.",
+        "cta": "Yes, delete"
+      },
+      "drawer": {
+        "title": "Registration detail",
+        "subtitle": "Open supporting documents (signed URLs), update the pipeline status, or capture private review notes."
+      },
+      "fields": {
+        "contactName": "Contact name",
+        "email": "Email",
+        "phone": "Phone",
+        "location": "Location",
+        "cr": "CR number",
+        "vat": "VAT number",
+        "years": "Experience",
+        "specialty": "Specialty",
+        "website": "Website",
+        "documents": "Supporting documents",
+        "status": "Status",
+        "notes": "Internal notes",
+        "notesPlaceholder": "Visible only to admins. Capture vendor due-diligence findings, references, or shortlisting rationale."
+      },
+      "toast": {
+        "statusUpdated": "Status updated.",
+        "notesUpdated": "Notes saved.",
+        "deleted": "Registration deleted."
+      },
+      "errors": {
+        "documentNotFound": "We couldn't find that document. It may have been removed from storage.",
+        "unauthorized": "Your session has expired. Please sign in again.",
+        "generic": "Something went wrong. Please try again."
+      },
+      "notProvided": "Not provided",
+      "documentLabel": "Document",
+      "yearsLabel": "years",
+      "csv": {
+        "id": "ID",
+        "company": "Company",
+        "contact": "Contact",
+        "email": "Email",
+        "phone": "Phone",
+        "location": "Location",
+        "cr": "CR number",
+        "vat": "VAT number",
+        "specialty": "Specialty",
+        "years": "Years experience",
+        "status": "Status",
+        "submitted": "Submitted",
+        "website": "Website",
+        "documentsCount": "Documents"
+      }
+    },
+    "rfqsAdmin": {
+      "title": "Quote requests",
+      "lead": "Triage incoming RFQs, open attached drawings and specs, reply directly via email, and export filtered lists for routing.",
+      "search": "Search by name, email, phone, company, project type, location…",
+      "filterStatus": "Status",
+      "filterAll": "All",
+      "filterBudget": "Budget",
+      "exportCsv": "Export CSV",
+      "status": {
+        "new": "New",
+        "in_progress": "In progress",
+        "quoted": "Quoted",
+        "won": "Won",
+        "lost": "Lost",
+        "closed": "Closed"
+      },
+      "budget": {
+        "under_100k": "Under SAR 100k",
+        "100k_500k": "SAR 100k – 500k",
+        "500k_1m": "SAR 500k – 1m",
+        "1m_5m": "SAR 1m – 5m",
+        "over_5m": "Over SAR 5m",
+        "unspecified": "Not specified"
+      },
+      "table": {
+        "submitter": "Submitter",
+        "project": "Project type",
+        "budget": "Budget",
+        "submitted": "Submitted",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "empty": "No RFQs match your filters.",
+      "actions": {
+        "view": "View",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "openAttachment": "Open",
+        "openingAttachment": "Opening…",
+        "saveNotes": "Save notes",
+        "savingNotes": "Saving…",
+        "notesUnchanged": "Notes saved"
+      },
+      "confirmDelete": {
+        "title": "Delete this quote request?",
+        "body": "The RFQ record is removed from the database. Uploaded attachments remain in storage.",
+        "cta": "Yes, delete"
+      },
+      "drawer": {
+        "title": "Quote request detail",
+        "subtitle": "Open attachments (signed URLs), capture private notes, and reply to the submitter."
+      },
+      "fields": {
+        "email": "Email",
+        "phone": "Phone",
+        "company": "Company",
+        "projectType": "Project type",
+        "budget": "Budget",
+        "location": "Location",
+        "startDate": "Target start",
+        "description": "Project description",
+        "attachments": "Attachments",
+        "status": "Status",
+        "notes": "Internal notes",
+        "notesPlaceholder": "Visible only to admins. Capture qualification, routing decisions, or follow-up reminders."
+      },
+      "reply": {
+        "title": "Reply to submitter",
+        "subtitle": "Sends a branded email to the submitter. Replies come back to your work address.",
+        "subject": "Subject",
+        "subjectPlaceholder": "RE: Your quote request",
+        "body": "Message",
+        "bodyPlaceholder": "Write the response. Greeting and signature are added automatically.",
+        "send": "Send reply",
+        "sending": "Sending…",
+        "hint": "If status is 'New' it auto-bumps to 'In progress' on send."
+      },
+      "toast": {
+        "statusUpdated": "Status updated.",
+        "notesUpdated": "Notes saved.",
+        "deleted": "RFQ deleted.",
+        "replySent": "Reply sent."
+      },
+      "errors": {
+        "attachmentNotFound": "We couldn't find that attachment. It may have been removed from storage.",
+        "replyFailed": "We couldn't send the email. Please retry — the issue is upstream.",
+        "replyValidation": "Subject and message are both required.",
+        "unauthorized": "Your session has expired. Please sign in again.",
+        "generic": "Something went wrong. Please try again."
+      },
+      "notProvided": "Not provided",
+      "attachmentLabel": "Attachment",
+      "csv": {
+        "id": "ID",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "company": "Company",
+        "projectType": "Project type",
+        "budget": "Budget",
+        "location": "Location",
+        "startDate": "Target start",
+        "status": "Status",
+        "submitted": "Submitted",
+        "attachmentsCount": "Attachments"
+      }
+    },
+    "certificationsAdmin": {
+      "title": "Certifications",
+      "lead": "Upload, reorder, and curate the credentials shown on the public certifications page.",
+      "newCert": "New certification",
+      "search": "Search by title or issuer…",
+      "filterVisibility": "Visibility",
+      "filterAll": "All",
+      "visibilityPublic": "Public",
+      "visibilityPrivate": "Private",
+      "table": {
+        "title": "Title",
+        "issuer": "Issuer",
+        "issued": "Issued",
+        "expires": "Expires",
+        "visibility": "Visibility",
+        "actions": "Actions"
+      },
+      "empty": "No certifications match your filters.",
+      "actions": {
+        "edit": "Edit",
+        "openFile": "Open file",
+        "openingFile": "Opening…",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "reorder": "Reorder",
+        "reorderHint": "Use the arrows to change the order, then save.",
+        "reorderSave": "Save order",
+        "reorderSaving": "Saving…",
+        "reorderCancel": "Cancel"
+      },
+      "confirmDelete": {
+        "title": "Delete this certification?",
+        "body": "The record is removed from the database. The file remains in storage.",
+        "cta": "Yes, delete"
+      },
+      "drawer": {
+        "createTitle": "New certification",
+        "editTitle": "Edit certification",
+        "subtitle": "Bilingual content powers both the English and Arabic certifications page."
+      },
+      "form": {
+        "titleEn": "Title (English)",
+        "titleAr": "Title (Arabic)",
+        "issuerEn": "Issuer (English)",
+        "issuerAr": "Issuer (Arabic)",
+        "descriptionEn": "Description (English)",
+        "descriptionAr": "Description (Arabic)",
+        "issuedOn": "Issued on",
+        "expiresOn": "Expires on",
+        "visibility": "Visibility",
+        "sortOrder": "Sort order",
+        "file": "Certificate file",
+        "fileHint": "PDF or image — public certificates go to /public, private ones to /private/certifications.",
+        "fileAdd": "Add file",
+        "fileReplace": "Replace file",
+        "thumbnail": "Thumbnail (optional)",
+        "thumbnailHint": "Square or 4:3 image used in the public list. If omitted, a generic file icon is shown.",
+        "thumbnailAdd": "Add thumbnail",
+        "thumbnailReplace": "Replace thumbnail",
+        "thumbnailRemove": "Remove",
+        "save": "Save certification",
+        "saving": "Saving…"
+      },
+      "toast": {
+        "created": "Certification added.",
+        "updated": "Certification updated.",
+        "deleted": "Certification deleted.",
+        "visibilityUpdated": "Visibility updated.",
+        "reordered": "New order saved."
+      },
+      "errors": {
+        "validation": "Please review the highlighted fields.",
+        "fileRequired": "Please upload the certificate file before saving.",
+        "fileNotFound": "We couldn't find that file. It may have been removed from storage.",
+        "unauthorized": "Your session has expired. Please sign in again.",
+        "generic": "Something went wrong. Please try again."
+      }
+    },
+    "contentAdmin": {
+      "title": "Site content",
+      "lead": "Edit the bilingual copy and assets that drive the home hero, footer, contact info, and About timeline. Changes go live as soon as you save.",
+      "tabs": {
+        "hero": "Home hero",
+        "cta": "Home CTA",
+        "timeline": "About timeline",
+        "footer": "Footer",
+        "contact": "Contact info"
+      },
+      "lastSavedNever": "Not yet saved.",
+      "lastSavedPrefix": "Last saved",
+      "save": "Save changes",
+      "saving": "Saving…",
+      "toast": {
+        "saved": "Changes saved."
+      },
+      "errors": {
+        "validation": "Please review the highlighted fields.",
+        "unauthorized": "Your session has expired. Please sign in again.",
+        "generic": "Something went wrong. Please try again."
+      },
+      "hero": {
+        "eyebrowEn": "Eyebrow (English)",
+        "eyebrowAr": "Eyebrow (Arabic)",
+        "titleEn": "Headline (English)",
+        "titleAr": "Headline (Arabic)",
+        "subtitleEn": "Subtitle (English)",
+        "subtitleAr": "Subtitle (Arabic)",
+        "ctaPrimaryEn": "Primary CTA label (English)",
+        "ctaPrimaryAr": "Primary CTA label (Arabic)",
+        "ctaPrimaryHref": "Primary CTA link",
+        "ctaSecondaryEn": "Secondary CTA label (English)",
+        "ctaSecondaryAr": "Secondary CTA label (Arabic)",
+        "ctaSecondaryHref": "Secondary CTA link",
+        "sliderTitle": "Slider images",
+        "sliderHint": "Up to 12 landscape photos. Drag to reorder. Captions are optional but recommended for accessibility.",
+        "sliderAdd": "Add images",
+        "sliderRemove": "Remove",
+        "sliderAltEn": "Alt text (English)",
+        "sliderAltAr": "Alt text (Arabic)",
+        "sliderEmpty": "No slider images yet — uploads land here in the order you add them."
+      },
+      "cta": {
+        "titleEn": "Title (English)",
+        "titleAr": "Title (Arabic)",
+        "subtitleEn": "Body (English)",
+        "subtitleAr": "Body (Arabic)",
+        "buttonEn": "Button label (English)",
+        "buttonAr": "Button label (Arabic)",
+        "buttonHref": "Button link"
+      },
+      "timeline": {
+        "subtitle": "Each entry becomes a milestone on the About timeline. Reorder with the arrows — the order shown here is the order shown on the public page.",
+        "add": "Add milestone",
+        "remove": "Remove",
+        "empty": "No milestones yet. Add your first one with the button below.",
+        "year": "Year",
+        "headingEn": "Heading (English)",
+        "headingAr": "Heading (Arabic)",
+        "bodyEn": "Body (English)",
+        "bodyAr": "Body (Arabic)"
+      },
+      "footer": {
+        "taglineEn": "Tagline (English)",
+        "taglineAr": "Tagline (Arabic)",
+        "socialsTitle": "Social profiles",
+        "linkedin": "LinkedIn",
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "youtube": "YouTube"
+      },
+      "contact": {
+        "hqAddressEn": "Head office address (English)",
+        "hqAddressAr": "Head office address (Arabic)",
+        "hqPhone": "Head office phone",
+        "branchAddressEn": "Branch address (English)",
+        "branchAddressAr": "Branch address (Arabic)",
+        "branchPhone": "Branch phone",
+        "email": "Public email",
+        "hoursEn": "Hours (English)",
+        "hoursAr": "Hours (Arabic)"
       }
     }
   },

@@ -104,6 +104,7 @@ export default async function AdminProjectsPage({
           formSortOrder: t("form.sortOrder"),
           formCoverImage: t("form.coverImage"),
           formCoverImageHint: t("form.coverImageHint"),
+          formCoverImageAdd: t("form.coverImageAdd"),
           formCoverImageReplace: t("form.coverImageReplace"),
           formCoverImageRemove: t("form.coverImageRemove"),
           formGallery: t("form.gallery"),

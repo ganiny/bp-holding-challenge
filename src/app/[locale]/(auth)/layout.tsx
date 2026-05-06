@@ -17,7 +17,7 @@ export default async function AuthLayout({
     <div className="relative flex min-h-svh flex-col overflow-hidden bg-brand-navy text-brand-cream">
       <ParticleField
         position="absolute"
-        opacity={0.18}
+        opacity={0.4}
         particleCount={70}
         connectionDistance={150}
         className="z-0"
@@ -30,11 +30,11 @@ export default async function AuthLayout({
           aria-label="BP Holding"
         >
           <Image
-            src="/bp-holding.svg"
+            src="/bp-holding.jpg"
             alt="BP Holding"
             width={120}
             height={32}
-            className="h-8 w-auto brightness-0 invert"
+            className="size-16"
             priority
           />
         </Link>

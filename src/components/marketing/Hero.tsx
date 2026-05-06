@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { BrandImagesSlider } from "./BrandImagesSlider";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/i18n/navigation";
 import { motion } from "motion/react";

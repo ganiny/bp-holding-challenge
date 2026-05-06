@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/lib/i18n/navigation";
-import { CompanyProfileViewer } from "@/components/marketing/CompanyProfileViewer";
 import { Button } from "@/components/ui/button";
 import {
   IconArrowRight,
   IconDownload,
   IconFileTypePdf,
 } from "@tabler/icons-react";
+import CompanyProfileViewerClient from '@/components/marketing/CompanyProfileViewer.client'
+
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -83,7 +84,7 @@ export default async function CompanyProfilePage({ params }: Props) {
           </div>
         </div>
 
-        <CompanyProfileViewer
+        <CompanyProfileViewerClient
           fileUrl={fileUrl}
           fileName={fileName}
           locale={fileLocale}

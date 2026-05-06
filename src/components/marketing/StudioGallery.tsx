@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import Image from "next/image";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import {
   IconChevronLeft,
@@ -9,6 +8,7 @@ import {
   IconPlayerPlayFilled,
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
+import { Image, ImageKitProvider } from "@imagekit/next";
 
 export type StudioItem = {
   id: string;
@@ -88,18 +88,18 @@ export function StudioGallery({
                   </span>
                 </span>
               ) : null}
-              <Image
-                src={
-                  item.thumbnail || (item.url.includes("pexels")
-                    ? "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29uc3RydWN0aW9uJTIwc2l0ZXxlbnwwfHwwfHx8MA%3D%3D"
-                    : item.url)
-                }
-                alt={item.caption ?? ""}
-                width={800}
-                height={600}
-                sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+              <ImageKitProvider
+                urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
+              >
+                <Image
+                  src={item.thumbnail || item.url}
+                  width={800}
+                  height={600}
+                  alt={item.caption ?? ""}
+                  sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </ImageKitProvider>
             </div>
             {item.caption ? (
               <p className="px-4 py-3 text-xs text-muted-foreground line-clamp-2">
@@ -111,9 +111,7 @@ export function StudioGallery({
       </div>
 
       <Dialog open={isOpen} onOpenChange={(o) => !o && close()}>
-        <DialogContent
-          className="w-[min(95vw,1100px)] md:w-[min(90vw,950px)] max-w-none p-0 bg-transparent border-0 shadow-none sm:max-w-none"
-        >
+        <DialogContent className="w-[min(95vw,1100px)] md:w-[min(90vw,950px)] max-w-none p-0 bg-transparent border-0 shadow-none sm:max-w-none">
           <DialogTitle className="sr-only">
             {current?.caption ?? "Media preview"}
           </DialogTitle>
@@ -128,13 +126,17 @@ export function StudioGallery({
                 />
               ) : (
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-black">
-                  <Image
-                    src={current.url}
-                    alt={current.caption ?? ""}
-                    fill
-                    sizes="95vw"
-                    className="object-contain"
-                  />
+                  <ImageKitProvider
+                    urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
+                  >
+                    <Image
+                      src={current.url}
+                      alt={current.caption ?? ""}
+                      fill
+                      sizes="95vw"
+                      className="object-contain"
+                    />
+                  </ImageKitProvider>
                 </div>
               )}
 

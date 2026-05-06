@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
@@ -18,6 +17,7 @@ import {
   PROJECT_PLACEHOLDER_IMAGE,
   PROJECT_FALLBACK_IMAGE,
 } from "@/data/project-images";
+import { Image, ImageKitProvider } from "@imagekit/next";
 
 export async function generateMetadata({
   params,
@@ -141,14 +141,18 @@ export default async function ProjectDetailPage({
     <main className="flex flex-1 flex-col">
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-brand-navy text-brand-cream">
-        <Image
-          src={cover}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-30"
-        />
+        <ImageKitProvider
+          urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
+        >
+          <Image
+            src={cover}
+            alt="cover image"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-30"
+          />
+        </ImageKitProvider>
         <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/80 via-brand-navy/85 to-brand-navy" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <Link
@@ -245,15 +249,17 @@ export default async function ProjectDetailPage({
                   className="overflow-hidden rounded-xl border border-border bg-card"
                 >
                   <div className="relative aspect-[4/3]">
-                    <Image
-                      src={m.file_path}
-                      alt={
-                        (locale === "ar" ? m.caption_ar : m.caption_en) ?? ""
-                      }
-                      fill
-                      sizes="(min-width: 1024px) 33vw, 50vw"
-                      className="object-cover"
-                    />
+                    <ImageKitProvider urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}>
+                      <Image
+                        src={m.file_path}
+                        alt={
+                          (locale === "ar" ? m.caption_ar : m.caption_en) ?? ""
+                        }
+                        fill
+                        sizes="(min-width: 1024px) 33vw, 50vw"
+                        className="object-cover"
+                      />
+                    </ImageKitProvider>
                   </div>
                   {(locale === "ar" ? m.caption_ar : m.caption_en) ? (
                     <figcaption className="p-4 text-sm text-muted-foreground">

@@ -116,7 +116,7 @@ export function LoginForm({
           <button
             type="button"
             onClick={() => setShowPassword((s) => !s)}
-            className="absolute inset-e-2 top-1/2 -translate-y-1/2 rounded p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+            className={`absolute top-1/2 ${locale === 'ar' ? 'inset-s-2' : 'inset-e-2'} -translate-y-1/2 rounded p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground`}
             aria-label={showPassword ? copy.hidePassword : copy.showPassword}
             tabIndex={-1}
           >
