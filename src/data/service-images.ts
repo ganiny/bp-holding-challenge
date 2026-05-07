@@ -9,7 +9,7 @@ export const SERVICE_PLACEHOLDER_IMAGE: Record<string, string> = {
   "structural-works":
     "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop",
   "interior-finishing":
-    "https://images.unsplash.com/photo-1556909211-d5b0d6f8efe7?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1502005097973-6a7082348e28?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGludGVyaW9yJTIwZGVzaWdufGVufDB8fDB8fHww",
   "engineering-consulting":
     "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1600&auto=format&fit=crop",
   "general-contracting":

@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import { motion } from "motion/react";
 import { Link } from "@/lib/i18n/navigation";
 import { Button } from "@/components/ui/button";
@@ -14,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { IconArrowRight, IconFilterX } from "@tabler/icons-react";
+import { Image, ImageKitProvider } from "@imagekit/next";
 
 export type PortfolioCard = {
   slug: string;
@@ -54,15 +54,17 @@ export function PortfolioGrid({
     for (const p of projects) {
       if (p.sector && !map.has(p.sector)) map.set(p.sector, p.sectorLabel);
     }
-    return Array.from(map, ([value, label]) => ({ value, label })).sort((a, b) =>
-      a.label.localeCompare(b.label),
+    return Array.from(map, ([value, label]) => ({ value, label })).sort(
+      (a, b) => a.label.localeCompare(b.label),
     );
   }, [projects]);
 
   const years = useMemo(
     () =>
       Array.from(
-        new Set(projects.map((p) => p.year).filter((y): y is number => y != null)),
+        new Set(
+          projects.map((p) => p.year).filter((y): y is number => y != null),
+        ),
       ).sort((a, b) => b - a),
     [projects],
   );
@@ -70,7 +72,9 @@ export function PortfolioGrid({
   const locations = useMemo(
     () =>
       Array.from(
-        new Set(projects.map((p) => p.location).filter((l): l is string => !!l)),
+        new Set(
+          projects.map((p) => p.location).filter((l): l is string => !!l),
+        ),
       ).sort(),
     [projects],
   );
@@ -86,7 +90,8 @@ export function PortfolioGrid({
     [projects, sector, year, location],
   );
 
-  const dirty = sector !== "__all__" || year !== "__all__" || location !== "__all__";
+  const dirty =
+    sector !== "__all__" || year !== "__all__" || location !== "__all__";
 
   return (
     <div className="space-y-10">
@@ -159,12 +164,11 @@ export function PortfolioGrid({
 
       {/* Grid */}
       {filtered.length === 0 ? (
-        <p className="py-20 text-center text-muted-foreground">{copy.noResults}</p>
+        <p className="py-20 text-center text-muted-foreground">
+          {copy.noResults}
+        </p>
       ) : (
-        <motion.div
-          layout
-          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-        >
+        <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p) => (
             <motion.div
               key={p.slug}
@@ -182,7 +186,13 @@ export function PortfolioGrid({
   );
 }
 
-function FilterField({ label, children }: { label: string; children: React.ReactNode }) {
+function FilterField({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex flex-col gap-1.5">
       <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-muted-foreground">
@@ -206,13 +216,17 @@ function ProjectCard({
       className="group relative block overflow-hidden rounded-xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:border-brand-gold/40"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
-          src={project.cover}
-          alt=""
-          fill
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+        <ImageKitProvider
+          urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
+        >
+          <Image
+            src={project.cover}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </ImageKitProvider>
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-brand-navy/30 to-transparent" />
         {project.sectorLabel ? (
           <Badge className="absolute end-3 top-3 bg-brand-gold/95 text-brand-navy hover:bg-brand-gold">
@@ -229,7 +243,9 @@ function ProjectCard({
           {project.title}
         </h3>
         {project.summary ? (
-          <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{project.summary}</p>
+          <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
+            {project.summary}
+          </p>
         ) : null}
         <p className="mt-4 inline-flex items-center text-xs font-mono uppercase tracking-[0.18em] text-brand-gold">
           {viewLabel}

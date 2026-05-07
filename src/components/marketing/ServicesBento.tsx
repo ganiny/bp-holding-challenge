@@ -28,7 +28,7 @@ const SUMMARIES_EN: Record<SectorId, string> = {
   residential: "Turn-key villas and residential complexes built to Saudi Building Code standards.",
   structural: "Foundations, frames, and reinforced concrete for buildings and infrastructure.",
   interior: "Premium interior finishing, joinery, and bespoke design for executive spaces.",
-  consulting: "Architectural, structural, and project-management consulting from concept to delivery.",
+  consulting: "Architectural, structural, and project-management consulting.",
   general: "Single point of accountability for multi-disciplinary project delivery.",
 };
 
@@ -36,7 +36,7 @@ const SUMMARIES_AR: Record<SectorId, string> = {
   residential: "إنشاء الفلل والمجمعات السكنية بمعايير كود البناء السعودي.",
   structural: "الأساسات والهياكل والخرسانة المسلحة للمباني والبنية التحتية.",
   interior: "تشطيبات داخلية فاخرة ونجارة وتصميم مخصص للمساحات التنفيذية.",
-  consulting: "استشارات معمارية وإنشائية وإدارة مشاريع من الفكرة إلى التسليم.",
+  consulting: "استشارات معمارية وإنشائية وإدارة مشاريع.",
   general: "نقطة مساءلة واحدة لتسليم المشاريع متعددة التخصصات.",
 };
 

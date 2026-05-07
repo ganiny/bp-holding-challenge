@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { Image, ImageKitProvider } from "@imagekit/next";
 
 export type ServiceCard = {
   slug: string;
@@ -42,13 +42,17 @@ export function ServicesFocusGrid({ cards, ctaLabel }: Props) {
               isOther && "scale-[0.98] blur-[2px]",
             )}
           >
-            <Image
-              src={card.cover}
-              alt=""
-              fill
-              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+            <ImageKitProvider
+              urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
+            >
+              <Image
+                src={card.cover}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </ImageKitProvider>
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent" />
 
             <div className="absolute inset-x-0 bottom-0 p-6 text-brand-cream">

@@ -75,12 +75,16 @@ function ProjectTile({
           translateZ={90}
           className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-brand-navy via-brand-navy/85 to-brand-navy-hover"
         >
-          <ImageKitProvider urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}>
+          <ImageKitProvider
+            urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
+          >
             <Image
               src={project.cover}
               fill
+              sizes="300px"
               alt="cover image"
               className="object-cover"
+              loading="eager"
             />
           </ImageKitProvider>
           <div className="flex h-full w-full items-end p-4">
