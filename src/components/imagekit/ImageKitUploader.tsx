@@ -104,7 +104,10 @@ export function ImageKitUploader({
             width: r.width,
             height: r.height,
             size: r.size ?? 0,
-            fileType: r.fileType ?? file.type,
+            // Prefer browser MIME ("video/mp4", "image/png", …) over ImageKit's
+            // coarse `fileType` ("image" / "non-image"), so consumers can do
+            // reliable startsWith("video") / startsWith("image") checks.
+            fileType: file.type || r.fileType || "",
           });
         }
 

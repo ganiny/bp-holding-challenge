@@ -66,8 +66,8 @@ export async function createStudioItems(
     tags: input.tags,
     visibility: input.visibility,
     sort_order: startOrder + idx,
-    caption_en: null,
-    caption_ar: null,
+    caption_en: it.caption_en,
+    caption_ar: it.caption_ar,
   }));
 
   const { error } = await admin.from("media_studio").insert(rows);
@@ -91,14 +91,21 @@ export async function updateStudioItem(
   const input = parsed.data;
 
   const admin = createSupabaseAdminClient();
+  const updatePayload: Record<string, unknown> = {
+    caption_en: input.caption_en,
+    caption_ar: input.caption_ar,
+    tags: input.tags,
+    visibility: input.visibility,
+  };
+  if (input.file_path !== undefined) {
+    updatePayload.file_path = input.file_path;
+  }
+  if (input.thumbnail_path !== undefined) {
+    updatePayload.thumbnail_path = input.thumbnail_path;
+  }
   const { error } = await admin
     .from("media_studio")
-    .update({
-      caption_en: input.caption_en,
-      caption_ar: input.caption_ar,
-      tags: input.tags,
-      visibility: input.visibility,
-    })
+    .update(updatePayload)
     .eq("id", input.id);
   if (error) {
     console.error("[admin/studio] update failed", error);

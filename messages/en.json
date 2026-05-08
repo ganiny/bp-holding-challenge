@@ -539,7 +539,17 @@
       "errorUnauthorized": "Your session has expired. Please sign in again.",
       "errorGeneric": "Something went wrong. Please try again.",
       "visibilityPublic": "Public",
-      "visibilityPrivate": "Private"
+      "visibilityPrivate": "Private",
+      "uploadVideoPosterAdd": "Add poster",
+      "uploadVideoPosterReplace": "Replace poster",
+      "uploadVideoPosterRemove": "Remove poster",
+      "uploadVideoPosterHint": "Optional poster image shown before the video plays.",
+      "editImageReplace": "Replace image",
+      "editVideoReplace": "Replace video",
+      "editVideoPoster": "Poster image",
+      "editVideoPosterReplace": "Replace poster",
+      "editVideoPosterAdd": "Add poster",
+      "editVideoPosterRemove": "Remove"
     },
     "careersAdmin": {
       "title": "Job postings",

@@ -18,6 +18,8 @@ export const studioCreateSchema = z.object({
         kind: z.enum(mediaKindValues),
         file_path: z.string().min(1).max(500),
         thumbnail_path: z.string().max(500).optional().nullable(),
+        caption_en: optionalText.pipe(z.union([z.string().max(300), z.null()])),
+        caption_ar: optionalText.pipe(z.union([z.string().max(300), z.null()])),
       }),
     )
     .min(1)
@@ -32,6 +34,11 @@ export const studioUpdateSchema = z.object({
   caption_ar: optionalText.pipe(z.union([z.string().max(300), z.null()])),
   tags: z.array(z.string().min(1).max(40)).max(20),
   visibility: z.enum(mediaVisibilityValues),
+  // Optional file replacements — only sent when the admin actually swaps assets.
+  file_path: z.string().min(1).max(500).optional(),
+  thumbnail_path: z
+    .union([z.string().max(500), z.null()])
+    .optional(),
 });
 
 export const studioReorderSchema = z.object({

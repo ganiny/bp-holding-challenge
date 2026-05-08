@@ -9,6 +9,7 @@ import {
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { Image, ImageKitProvider } from "@imagekit/next";
+import { imageKitPublicUrl } from "@/lib/imagekit/loader";
 
 export type StudioItem = {
   id: string;
@@ -81,6 +82,35 @@ export function StudioGallery({
             )}
           >
             <div className="relative">
+              {/* Tile preview: image filePath → ImageKit; video → poster image
+                  if available, otherwise a muted video frame as fallback so we
+                  never feed a video path into <Image>. */}
+              {item.kind === "video" && !item.thumbnail ? (
+                <video
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                >
+                  <source
+                    src={imageKitPublicUrl(item.url)}
+                    type="video/mp4"
+                  />
+                </video>
+              ) : (
+                <ImageKitProvider
+                  urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
+                >
+                  <Image
+                    src={item.thumbnail || item.url}
+                    width={800}
+                    height={600}
+                    alt={item.caption ?? ""}
+                    sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </ImageKitProvider>
+              )}
               {item.kind === "video" ? (
                 <span className="absolute inset-0 flex items-center justify-center bg-brand-navy/40">
                   <span className="flex size-14 items-center justify-center rounded-full bg-brand-gold/95 text-brand-navy shadow-xl">
@@ -88,18 +118,6 @@ export function StudioGallery({
                   </span>
                 </span>
               ) : null}
-              <ImageKitProvider
-                urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
-              >
-                <Image
-                  src={item.thumbnail || item.url}
-                  width={800}
-                  height={600}
-                  alt={item.caption ?? ""}
-                  sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </ImageKitProvider>
             </div>
             {item.caption ? (
               <p className="px-4 py-3 text-xs text-muted-foreground line-clamp-2">
@@ -119,11 +137,24 @@ export function StudioGallery({
             <div className="relative">
               {current.kind === "video" ? (
                 <video
-                  src={current.url}
+                  key={current.id}
+                  poster={
+                    current.thumbnail
+                      ? imageKitPublicUrl(current.thumbnail)
+                      : undefined
+                  }
                   controls
                   autoPlay
+                  muted
+                  playsInline
+                  preload="metadata"
                   className="w-full max-h-[85vh] rounded-xl bg-black"
-                />
+                >
+                  <source
+                    src={imageKitPublicUrl(current.url)}
+                    type="video/mp4"
+                  />
+                </video>
               ) : (
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-black">
                   <ImageKitProvider

@@ -92,6 +92,16 @@ export default async function AdminStudioPage({
           errorGeneric: t("errorGeneric"),
           visibilityPublic: t("visibilityPublic"),
           visibilityPrivate: t("visibilityPrivate"),
+          uploadVideoPosterAdd: t("uploadVideoPosterAdd"),
+          uploadVideoPosterReplace: t("uploadVideoPosterReplace"),
+          uploadVideoPosterRemove: t("uploadVideoPosterRemove"),
+          uploadVideoPosterHint: t("uploadVideoPosterHint"),
+          editImageReplace: t("editImageReplace"),
+          editVideoReplace: t("editVideoReplace"),
+          editVideoPoster: t("editVideoPoster"),
+          editVideoPosterReplace: t("editVideoPosterReplace"),
+          editVideoPosterAdd: t("editVideoPosterAdd"),
+          editVideoPosterRemove: t("editVideoPosterRemove"),
         }}
       />
     </section>

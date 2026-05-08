@@ -45,6 +45,7 @@ import {
   ImageKitUploader,
   type UploadResult,
 } from "@/components/imagekit/ImageKitUploader";
+import { ImageKitImage } from "@/components/imagekit/ImageKitImage";
 import {
   createStudioItems,
   updateStudioItem,
@@ -56,7 +57,6 @@ import type {
   MediaVisibilityValue,
 } from "@/lib/validation/studio";
 import { cn } from "@/lib/utils";
-import { Image, ImageKitProvider } from "@imagekit/next";
 
 export type StudioRow = {
   id: string;
@@ -118,12 +118,26 @@ export type StudioAdminCopy = {
   errorGeneric: string;
   visibilityPublic: string;
   visibilityPrivate: string;
+  // Per-video poster (upload + edit)
+  uploadVideoPosterAdd: string;
+  uploadVideoPosterReplace: string;
+  uploadVideoPosterRemove: string;
+  uploadVideoPosterHint: string;
+  // Edit drawer — file replacement
+  editImageReplace: string;
+  editVideoReplace: string;
+  editVideoPoster: string;
+  editVideoPosterReplace: string;
+  editVideoPosterAdd: string;
+  editVideoPosterRemove: string;
 };
 
 type Staged = {
   file_path: string;
   thumbnail_path: string | null;
   kind: MediaKindValue;
+  caption_en: string;
+  caption_ar: string;
 };
 
 function parseTags(input: string): string[] {
@@ -135,6 +149,37 @@ function parseTags(input: string): string[] {
         .filter(Boolean),
     ),
   );
+}
+
+const VIDEO_EXTS = new Set(["mp4", "mov", "webm", "mkv", "avi", "m4v", "ogv"]);
+const IMAGE_EXTS = new Set([
+  "jpg",
+  "jpeg",
+  "png",
+  "webp",
+  "gif",
+  "avif",
+  "svg",
+  "bmp",
+  "heic",
+  "heif",
+]);
+
+/**
+ * Decide if an upload should be treated as a video, image, or document.
+ * MIME prefix is the strongest signal; extension is a fallback when the
+ * browser/ImageKit didn't supply a usable MIME.
+ */
+function detectMediaKind(
+  mime: string | undefined,
+  filePath: string,
+): MediaKindValue {
+  if (mime?.startsWith("video")) return "video";
+  if (mime?.startsWith("image")) return "image";
+  const ext = (filePath.split(".").pop() ?? "").toLowerCase();
+  if (VIDEO_EXTS.has(ext)) return "video";
+  if (IMAGE_EXTS.has(ext)) return "image";
+  return "image";
 }
 
 export function StudioAdminClient({
@@ -325,9 +370,9 @@ export function StudioAdminClient({
                 ...results.map((r) => ({
                   file_path: r.filePath,
                   thumbnail_path: null,
-                  kind: (r.fileType?.startsWith("video")
-                    ? "video"
-                    : "image") as MediaKindValue,
+                  kind: detectMediaKind(r.fileType, r.filePath),
+                  caption_en: "",
+                  caption_ar: "",
                 })),
               ]);
             }}
@@ -365,40 +410,124 @@ export function StudioAdminClient({
         </div>
 
         {staged.length > 0 ? (
-          <ul className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-8">
-            {staged.map((s, idx) => (
-              <li
-                key={`${s.file_path}-${idx}`}
-                className="relative aspect-square overflow-hidden rounded-md bg-muted"
-              >
-                {s.kind === "image" ? (
-                  <ImageKitProvider
-                    urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
-                  >
-                    <Image
-                      src={s.file_path}
-                      width={500}
-                      height={500}
-                      alt="cover image"
-                    />
-                  </ImageKitProvider>
-                ) : (
-                  <div className="flex h-full items-center justify-center text-[10px] uppercase tracking-wide text-muted-foreground">
-                    video
-                  </div>
-                )}
-                <button
-                  type="button"
-                  onClick={() =>
-                    setStaged((prev) => prev.filter((_, i) => i !== idx))
-                  }
-                  className="absolute top-1 end-1 inline-flex size-5 items-center justify-center rounded-full bg-black/60 text-white"
-                  aria-label="remove"
+          <ul className="mt-4 space-y-3">
+            {staged.map((s, idx) => {
+              const updateField = <K extends keyof Staged>(
+                key: K,
+                value: Staged[K],
+              ) =>
+                setStaged((prev) =>
+                  prev.map((item, i) =>
+                    i === idx ? { ...item, [key]: value } : item,
+                  ),
+                );
+              return (
+                <li
+                  key={`${s.file_path}-${idx}`}
+                  className="flex flex-wrap items-start gap-3 rounded-lg border border-border bg-muted/30 p-3"
                 >
-                  <IconX className="size-3" />
-                </button>
-              </li>
-            ))}
+                  {/* Preview: image / video-poster / video icon */}
+                  <div className="relative size-24 shrink-0 overflow-hidden rounded-md bg-muted">
+                    {s.kind === "image" ? (
+                      <ImageKitImage
+                        src={s.file_path}
+                        alt=""
+                        fill
+                        sizes="96px"
+                        className="object-cover"
+                      />
+                    ) : s.thumbnail_path ? (
+                      <ImageKitImage
+                        src={s.thumbnail_path}
+                        alt=""
+                        fill
+                        sizes="96px"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center text-[10px] uppercase tracking-wide text-muted-foreground">
+                        video
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Captions + per-video poster */}
+                  <div className="flex-1 min-w-[200px] space-y-2">
+                    <div className="grid gap-2 sm:grid-cols-2">
+                      <Input
+                        dir="ltr"
+                        placeholder={copy.formCaptionEn}
+                        value={s.caption_en}
+                        onChange={(e) => updateField("caption_en", e.target.value)}
+                      />
+                      <Input
+                        dir="rtl"
+                        placeholder={copy.formCaptionAr}
+                        value={s.caption_ar}
+                        onChange={(e) => updateField("caption_ar", e.target.value)}
+                      />
+                    </div>
+
+                    {s.kind === "video" ? (
+                      <div className="flex flex-wrap items-center gap-2">
+                        <ImageKitUploader
+                          folder={
+                            stagedVisibility === "public"
+                              ? "/public/studio"
+                              : "/private/documents"
+                          }
+                          accept="image/*"
+                          maxSizeMB={5}
+                          label={
+                            s.thumbnail_path
+                              ? copy.uploadVideoPosterReplace
+                              : copy.uploadVideoPosterAdd
+                          }
+                          onUploaded={(results: UploadResult[]) => {
+                            const r = results[0];
+                            if (r) updateField("thumbnail_path", r.filePath);
+                          }}
+                        />
+                        {s.thumbnail_path ? (
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => updateField("thumbnail_path", null)}
+                          >
+                            {copy.uploadVideoPosterRemove}
+                          </Button>
+                        ) : (
+                          <span className="text-xs text-muted-foreground">
+                            {copy.uploadVideoPosterHint}
+                          </span>
+                        )}
+                      </div>
+                    ) : null}
+
+                    <p
+                      className="text-[11px] text-muted-foreground truncate"
+                      dir="ltr"
+                    >
+                      {s.file_path}
+                    </p>
+                  </div>
+
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon-sm"
+                    onClick={() =>
+                      setStaged((prev) => prev.filter((_, i) => i !== idx))
+                    }
+                    aria-label={copy.uploadDiscard}
+                    title={copy.uploadDiscard}
+                  >
+                    <IconX className="size-4 text-red-600 dark:text-red-400" />
+                  </Button>
+                </li>
+              );
+            })}
           </ul>
         ) : null}
       </section>
@@ -512,18 +641,21 @@ export function StudioAdminClient({
               >
                 <div className="relative aspect-square bg-card">
                   {it.kind === "image" ? (
-                    <ImageKitProvider
-                      urlEndpoint={
-                        process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT
-                      }
-                    >
-                      <Image
-                        src={it.file_path}
-                        width={500}
-                        height={500}
-                        alt="cover image"
-                      />
-                    </ImageKitProvider>
+                    <ImageKitImage
+                      src={it.file_path}
+                      alt={caption ?? ""}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 240px"
+                      className="object-cover"
+                    />
+                  ) : it.thumbnail_path ? (
+                    <ImageKitImage
+                      src={it.thumbnail_path}
+                      alt={caption ?? ""}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 240px"
+                      className="object-cover"
+                    />
                   ) : (
                     <div className="flex h-full items-center justify-center text-xs uppercase tracking-wide text-muted-foreground bg-muted">
                       {it.kind}
@@ -685,21 +817,35 @@ function EditDrawer({
   const [visibility, setVisibility] = useState<MediaVisibilityValue>(
     item?.visibility ?? "public",
   );
+  // File replacements — null/undefined-distinct: undefined = unchanged, string = new path, "" = cleared (poster only).
+  const [filePath, setFilePath] = useState<string | undefined>(undefined);
+  const [thumbnailPath, setThumbnailPath] = useState<string | null | undefined>(
+    undefined,
+  );
   const [isPending, startTransition] = useTransition();
+
+  if (!item) return null;
+
+  // Effective values for preview after any in-drawer replacements.
+  const currentFilePath = filePath ?? item.file_path;
+  const currentThumbnailPath =
+    thumbnailPath === undefined ? item.thumbnail_path : thumbnailPath;
+  const uploadFolder =
+    visibility === "public" ? "/public/studio" : "/private/documents";
 
   function save() {
     if (!item) return;
     startTransition(async () => {
-      const res = await updateStudioItem(
-        {
-          id: item.id,
-          caption_en: captionEn,
-          caption_ar: captionAr,
-          tags: parseTags(tagsInput),
-          visibility,
-        },
-        locale,
-      );
+      const payload: Record<string, unknown> = {
+        id: item.id,
+        caption_en: captionEn,
+        caption_ar: captionAr,
+        tags: parseTags(tagsInput),
+        visibility,
+      };
+      if (filePath !== undefined) payload.file_path = filePath;
+      if (thumbnailPath !== undefined) payload.thumbnail_path = thumbnailPath;
+      const res = await updateStudioItem(payload, locale);
       if (res.ok) {
         toast.success(copy.successUpdated);
         onClose();
@@ -724,107 +870,196 @@ function EditDrawer({
           <SheetDescription>{copy.editSubtitle}</SheetDescription>
         </SheetHeader>
 
-        {item ? (
-          <div className="space-y-4 px-4 pb-6">
-            <div className="relative aspect-video overflow-hidden rounded-lg bg-muted">
-              {item.kind === "image" ? (
-                <ImageKitProvider
-                  urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
-                >
-                  <Image
-                    src={item.file_path}
-                    width={500}
-                    height={500}
-                    alt="cover image"
-                  />
-                </ImageKitProvider>
-              ) : (
-                <div className="flex h-full items-center justify-center text-xs uppercase tracking-wide text-muted-foreground">
-                  {item.kind}
-                </div>
-              )}
-            </div>
+        <div className="space-y-4 px-4 pb-6">
+          {/* Preview: image content OR video poster (or video placeholder) */}
+          <div className="relative aspect-video overflow-hidden rounded-lg bg-muted">
+            {item.kind === "image" ? (
+              <ImageKitImage
+                src={currentFilePath}
+                alt={captionEn || captionAr || ""}
+                fill
+                sizes="(max-width: 640px) 100vw, 480px"
+                className="object-cover"
+              />
+            ) : currentThumbnailPath ? (
+              <ImageKitImage
+                src={currentThumbnailPath}
+                alt={captionEn || captionAr || ""}
+                fill
+                sizes="(max-width: 640px) 100vw, 480px"
+                className="object-cover"
+              />
+            ) : (
+              <div className="flex h-full items-center justify-center text-xs uppercase tracking-wide text-muted-foreground">
+                {item.kind}
+              </div>
+            )}
+          </div>
 
-            <div>
-              <Label htmlFor="cap-en">{copy.formCaptionEn}</Label>
-              <Input
-                id="cap-en"
-                dir="ltr"
-                value={captionEn}
-                onChange={(e) => setCaptionEn(e.target.value)}
-                className="mt-2"
+          {/* File replacement controls */}
+          {item.kind === "image" ? (
+            <div className="space-y-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                {copy.editImageReplace}
+              </Label>
+              <ImageKitUploader
+                folder={uploadFolder}
+                accept="image/*"
+                maxSizeMB={20}
+                label={copy.editImageReplace}
+                onUploaded={(results: UploadResult[]) => {
+                  const r = results[0];
+                  if (r) setFilePath(r.filePath);
+                }}
               />
-            </div>
-            <div>
-              <Label htmlFor="cap-ar">{copy.formCaptionAr}</Label>
-              <Input
-                id="cap-ar"
-                dir="rtl"
-                value={captionAr}
-                onChange={(e) => setCaptionAr(e.target.value)}
-                className="mt-2"
-              />
-            </div>
-            <div>
-              <Label htmlFor="cap-tags">{copy.formTags}</Label>
-              <Input
-                id="cap-tags"
-                value={tagsInput}
-                onChange={(e) => setTagsInput(e.target.value)}
-                className="mt-2"
-              />
-              <p className="mt-1 text-xs text-muted-foreground">
-                {copy.formTagsHint}
+              <p className="text-[11px] text-muted-foreground truncate" dir="ltr">
+                {currentFilePath}
               </p>
             </div>
-            <div>
-              <Label className="mb-2 block">{copy.formVisibility}</Label>
-              <Select
-                value={visibility}
-                onValueChange={(v) => setVisibility(v as MediaVisibilityValue)}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="public">
-                    <span className="inline-flex items-center gap-2">
-                      <IconEye className="size-3.5" />
-                      {copy.visibilityPublic}
-                    </span>
-                  </SelectItem>
-                  <SelectItem value="private">
-                    <span className="inline-flex items-center gap-2">
-                      <IconEyeOff className="size-3.5" />
-                      {copy.visibilityPrivate}
-                    </span>
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          ) : (
+            <>
+              <div className="space-y-2">
+                <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                  {copy.editVideoReplace}
+                </Label>
+                <ImageKitUploader
+                  folder={uploadFolder}
+                  accept="video/mp4"
+                  maxSizeMB={200}
+                  label={copy.editVideoReplace}
+                  onUploaded={(results: UploadResult[]) => {
+                    const r = results[0];
+                    if (r) setFilePath(r.filePath);
+                  }}
+                />
+                <p
+                  className="text-[11px] text-muted-foreground truncate"
+                  dir="ltr"
+                >
+                  {currentFilePath}
+                </p>
+              </div>
+              <div className="space-y-2">
+                <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                  {copy.editVideoPoster}
+                </Label>
+                <div className="flex flex-wrap items-center gap-2">
+                  <ImageKitUploader
+                    folder={uploadFolder}
+                    accept="image/*"
+                    maxSizeMB={5}
+                    label={
+                      currentThumbnailPath
+                        ? copy.editVideoPosterReplace
+                        : copy.editVideoPosterAdd
+                    }
+                    onUploaded={(results: UploadResult[]) => {
+                      const r = results[0];
+                      if (r) setThumbnailPath(r.filePath);
+                    }}
+                  />
+                  {currentThumbnailPath ? (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setThumbnailPath(null)}
+                    >
+                      {copy.editVideoPosterRemove}
+                    </Button>
+                  ) : null}
+                </div>
+                {currentThumbnailPath ? (
+                  <p
+                    className="text-[11px] text-muted-foreground truncate"
+                    dir="ltr"
+                  >
+                    {currentThumbnailPath}
+                  </p>
+                ) : null}
+              </div>
+            </>
+          )}
 
-            <div className="flex justify-end gap-2 pt-2">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={onClose}
-                disabled={isPending}
-              >
-                {copy.cancel}
-              </Button>
-              <Button type="button" onClick={save} disabled={isPending}>
-                {isPending ? (
-                  <>
-                    <IconLoader2 className="size-4 animate-spin" />
-                    {copy.saving}
-                  </>
-                ) : (
-                  copy.save
-                )}
-              </Button>
-            </div>
+          <div>
+            <Label htmlFor="cap-en">{copy.formCaptionEn}</Label>
+            <Input
+              id="cap-en"
+              dir="ltr"
+              value={captionEn}
+              onChange={(e) => setCaptionEn(e.target.value)}
+              className="mt-2"
+            />
           </div>
-        ) : null}
+          <div>
+            <Label htmlFor="cap-ar">{copy.formCaptionAr}</Label>
+            <Input
+              id="cap-ar"
+              dir="rtl"
+              value={captionAr}
+              onChange={(e) => setCaptionAr(e.target.value)}
+              className="mt-2"
+            />
+          </div>
+          <div>
+            <Label htmlFor="cap-tags">{copy.formTags}</Label>
+            <Input
+              id="cap-tags"
+              value={tagsInput}
+              onChange={(e) => setTagsInput(e.target.value)}
+              className="mt-2"
+            />
+            <p className="mt-1 text-xs text-muted-foreground">
+              {copy.formTagsHint}
+            </p>
+          </div>
+          <div>
+            <Label className="mb-2 block">{copy.formVisibility}</Label>
+            <Select
+              value={visibility}
+              onValueChange={(v) => setVisibility(v as MediaVisibilityValue)}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="public">
+                  <span className="inline-flex items-center gap-2">
+                    <IconEye className="size-3.5" />
+                    {copy.visibilityPublic}
+                  </span>
+                </SelectItem>
+                <SelectItem value="private">
+                  <span className="inline-flex items-center gap-2">
+                    <IconEyeOff className="size-3.5" />
+                    {copy.visibilityPrivate}
+                  </span>
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="flex justify-end gap-2 pt-2">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onClose}
+              disabled={isPending}
+            >
+              {copy.cancel}
+            </Button>
+            <Button type="button" onClick={save} disabled={isPending}>
+              {isPending ? (
+                <>
+                  <IconLoader2 className="size-4 animate-spin" />
+                  {copy.saving}
+                </>
+              ) : (
+                copy.save
+              )}
+            </Button>
+          </div>
+        </div>
       </SheetContent>
     </Sheet>
   );

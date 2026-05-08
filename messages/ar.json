@@ -539,7 +539,17 @@
       "errorUnauthorized": "انتهت جلستك. الرجاء تسجيل الدخول مرة أخرى.",
       "errorGeneric": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
       "visibilityPublic": "عام",
-      "visibilityPrivate": "خاص"
+      "visibilityPrivate": "خاص",
+      "uploadVideoPosterAdd": "إضافة صورة معاينة",
+      "uploadVideoPosterReplace": "استبدال صورة المعاينة",
+      "uploadVideoPosterRemove": "إزالة صورة المعاينة",
+      "uploadVideoPosterHint": "صورة معاينة اختيارية تظهر قبل تشغيل الفيديو.",
+      "editImageReplace": "استبدال الصورة",
+      "editVideoReplace": "استبدال الفيديو",
+      "editVideoPoster": "صورة المعاينة",
+      "editVideoPosterReplace": "استبدال صورة المعاينة",
+      "editVideoPosterAdd": "إضافة صورة معاينة",
+      "editVideoPosterRemove": "إزالة"
     },
     "careersAdmin": {
       "title": "الوظائف الشاغرة",
