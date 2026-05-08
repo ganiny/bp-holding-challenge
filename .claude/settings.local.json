@@ -85,7 +85,10 @@
       "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('messages/en.json','utf8'\\)\\); JSON.parse\\(require\\('fs'\\).readFileSync\\('messages/ar.json','utf8'\\)\\); console.log\\('OK'\\);\")",
       "Bash(find src/components/marketing/StudioGallery* -type f)",
       "Bash(npx --yes supabase --version)",
-      "Bash(node scripts/apply-store-migration.mjs)"
+      "Bash(node scripts/apply-store-migration.mjs)",
+      "Bash(node -e \"try { JSON.parse\\(require\\('fs'\\).readFileSync\\('e:/Monafis-Challenges/bp-holding-challenge/messages/en.json','utf8'\\)\\); console.log\\('en OK'\\); } catch\\(e\\) { console.log\\('en ERR:', e.message\\); } try { JSON.parse\\(require\\('fs'\\).readFileSync\\('e:/Monafis-Challenges/bp-holding-challenge/messages/ar.json','utf8'\\)\\); console.log\\('ar OK'\\); } catch\\(e\\) { console.log\\('ar ERR:', e.message\\); }\")",
+      "Bash(npx tsc *)",
+      "Bash(cross-env NODE_OPTIONS=--use-system-ca next dev)"
     ]
   }
 }
