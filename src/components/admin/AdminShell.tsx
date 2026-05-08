@@ -27,13 +27,19 @@ import {
   IconLoader2,
   IconUserCircle,
 } from "@tabler/icons-react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/Logo";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { signOut } from "@/lib/auth/actions";
 import { cn } from "@/lib/utils";
+import { ImageKitImage } from "../imagekit/ImageKitImage";
 
 const COLLAPSED_KEY = "bp-admin-sidebar-collapsed";
 const COLLAPSED_EVENT = "bp-admin-sidebar-collapsed-change";
@@ -81,7 +87,12 @@ export type AdminShellCopy = {
 
 type Section = {
   key: "main" | "content" | "settings";
-  items: { href: string; key: string; label: string; Icon: typeof IconLayoutDashboard }[];
+  items: {
+    href: string;
+    key: string;
+    label: string;
+    Icon: typeof IconLayoutDashboard;
+  }[];
 };
 
 function buildSections(copy: AdminShellCopy): Section[] {
@@ -89,27 +100,82 @@ function buildSections(copy: AdminShellCopy): Section[] {
     {
       key: "main",
       items: [
-        { href: "/admin", key: "overview", label: copy.navOverview, Icon: IconLayoutDashboard },
-        { href: "/admin/projects", key: "projects", label: copy.navProjects, Icon: IconBriefcase },
-        { href: "/admin/portfolio-studio", key: "studio", label: copy.navStudio, Icon: IconPhotoVideo },
+        {
+          href: "/admin",
+          key: "overview",
+          label: copy.navOverview,
+          Icon: IconLayoutDashboard,
+        },
+        {
+          href: "/admin/projects",
+          key: "projects",
+          label: copy.navProjects,
+          Icon: IconBriefcase,
+        },
+        {
+          href: "/admin/portfolio-studio",
+          key: "studio",
+          label: copy.navStudio,
+          Icon: IconPhotoVideo,
+        },
       ],
     },
     {
       key: "content",
       items: [
-        { href: "/admin/careers", key: "careers", label: copy.navCareers, Icon: IconBuildingFactory2 },
-        { href: "/admin/job-applications", key: "jobApplications", label: copy.navJobApplications, Icon: IconUserSearch },
-        { href: "/admin/contractors", key: "contractors", label: copy.navContractors, Icon: IconFileDescription },
-        { href: "/admin/rfqs", key: "rfqs", label: copy.navRfqs, Icon: IconClipboardList },
-        { href: "/admin/messages", key: "messages", label: copy.navMessages, Icon: IconMessageDots },
-        { href: "/admin/certifications", key: "certifications", label: copy.navCertifications, Icon: IconCertificate },
-        { href: "/admin/content", key: "content", label: copy.navContent, Icon: IconAdjustments },
+        {
+          href: "/admin/careers",
+          key: "careers",
+          label: copy.navCareers,
+          Icon: IconBuildingFactory2,
+        },
+        {
+          href: "/admin/job-applications",
+          key: "jobApplications",
+          label: copy.navJobApplications,
+          Icon: IconUserSearch,
+        },
+        {
+          href: "/admin/contractors",
+          key: "contractors",
+          label: copy.navContractors,
+          Icon: IconFileDescription,
+        },
+        {
+          href: "/admin/rfqs",
+          key: "rfqs",
+          label: copy.navRfqs,
+          Icon: IconClipboardList,
+        },
+        {
+          href: "/admin/messages",
+          key: "messages",
+          label: copy.navMessages,
+          Icon: IconMessageDots,
+        },
+        {
+          href: "/admin/certifications",
+          key: "certifications",
+          label: copy.navCertifications,
+          Icon: IconCertificate,
+        },
+        {
+          href: "/admin/content",
+          key: "content",
+          label: copy.navContent,
+          Icon: IconAdjustments,
+        },
       ],
     },
     {
       key: "settings",
       items: [
-        { href: "/admin/settings", key: "settings", label: copy.navSettings, Icon: IconSettings },
+        {
+          href: "/admin/settings",
+          key: "settings",
+          label: copy.navSettings,
+          Icon: IconSettings,
+        },
       ],
     },
   ];
@@ -211,7 +277,9 @@ export function AdminShell({
           </div>
         </header>
 
-        <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8">{children}</main>
+        <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8">
+          {children}
+        </main>
       </div>
     </div>
   );
@@ -231,7 +299,12 @@ function SidebarContent({
   collapsed: boolean;
   sections: Section[];
   pathname: string;
-  profile: { fullName: string | null; email: string; role: string; avatarUrl: string | null };
+  profile: {
+    fullName: string | null;
+    email: string;
+    role: string;
+    avatarUrl: string | null;
+  };
   copy: AdminShellCopy;
   onToggleCollapse?: () => void;
   onNavigate?: () => void;
@@ -280,7 +353,8 @@ function SidebarContent({
                 const active =
                   item.href === "/admin"
                     ? pathname === "/admin"
-                    : pathname === item.href || pathname.startsWith(`${item.href}/`);
+                    : pathname === item.href ||
+                      pathname.startsWith(`${item.href}/`);
                 return (
                   <li key={item.key}>
                     <Link
@@ -323,10 +397,12 @@ function SidebarContent({
           <span className="inline-flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-navy/10 text-brand-navy">
             {profile.avatarUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <ImageKitImage
                 src={profile.avatarUrl}
-                alt=""
+                alt="avatar"
                 className="size-9 rounded-full object-cover"
+                width={36}
+                height={36}
               />
             ) : (
               <IconUserCircle className="size-6" />
@@ -337,7 +413,7 @@ function SidebarContent({
               <p className="truncate text-sm font-medium">
                 {profile.fullName || profile.email.split("@")[0]}
               </p>
-              <p className="truncate text-xs text-muted-foreground" dir="ltr">
+              <p className="truncate text-xs text-muted-foreground">
                 {profile.email}
               </p>
             </div>

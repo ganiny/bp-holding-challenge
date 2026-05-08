@@ -1126,6 +1126,59 @@
         "status": "Status",
         "submitted": "Submitted"
       }
+    },
+    "settingsAdmin": {
+      "title": "Settings",
+      "lead": "Update the name, phone, and avatar shown across the admin console, or change your password.",
+      "tabs": {
+        "profile": "Profile",
+        "password": "Password"
+      },
+      "profile": {
+        "title": "Admin profile",
+        "subtitle": "These details show up in the sidebar header and in any audit logs.",
+        "email": "Work email",
+        "emailHint": "Email is managed by IT and can't be changed from here.",
+        "fullName": "Full name",
+        "fullNamePlaceholder": "Your full name",
+        "phone": "Phone (optional)",
+        "phonePlaceholder": "+966 5X XXX XXXX",
+        "avatar": "Avatar",
+        "avatarHint": "Square image (JPG / PNG / WEBP), up to 5 MB.",
+        "avatarReplace": "Replace",
+        "avatarRemove": "Remove",
+        "save": "Save profile",
+        "saving": "Saving…",
+        "success": "Profile updated.",
+        "errorValidation": "Please review the highlighted fields.",
+        "errorUnauthorized": "Your session has expired. Please sign in again.",
+        "errorGeneric": "Something went wrong. Please try again."
+      },
+      "password": {
+        "title": "Change password",
+        "subtitle": "You'll stay signed in after the change. Use a long, unique password — these credentials grant admin access.",
+        "current": "Current password",
+        "currentPlaceholder": "Your current password",
+        "new": "New password",
+        "newPlaceholder": "At least 10 characters",
+        "confirm": "Confirm new password",
+        "confirmPlaceholder": "Repeat new password",
+        "show": "Show password",
+        "hide": "Hide password",
+        "submit": "Update password",
+        "submitting": "Updating…",
+        "ruleMin": "At least 10 characters.",
+        "ruleLower": "At least one lowercase letter.",
+        "ruleUpper": "At least one uppercase letter.",
+        "ruleDigit": "At least one number.",
+        "success": "Password updated.",
+        "errorInvalidCurrent": "Your current password is incorrect.",
+        "errorMismatch": "The two new passwords don't match.",
+        "errorSameAsCurrent": "Your new password must be different from the current one.",
+        "errorValidation": "New password doesn't meet the requirements.",
+        "errorUnauthorized": "Your session has expired. Please sign in again.",
+        "errorGeneric": "Something went wrong. Please try again."
+      }
     }
   },
   "auth": {
