@@ -1,8 +1,15 @@
-import { useTranslations } from "next-intl";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/lib/i18n/navigation";
 import { Logo } from "./Logo";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { IconBrandLinkedin, IconBrandFacebook } from "@tabler/icons-react";
+import {
+  IconBrandLinkedin,
+  IconBrandFacebook,
+  IconBrandX,
+  IconBrandInstagram,
+  IconBrandYoutube,
+} from "@tabler/icons-react";
+import { getSiteContentBlock, pickLocale } from "@/lib/site-content/server";
 
 const EXPLORE = [
   { key: "home", href: "/" },
@@ -26,11 +33,39 @@ const LEGAL: { key: "privacy" | "terms" | "companyProfile"; href: string; source
   { key: "companyProfile", href: "/company-profile", source: "nav" },
 ];
 
-export function Footer() {
-  const tNav = useTranslations("nav");
-  const tFooter = useTranslations("footer");
-  const tCommon = useTranslations("common");
+export async function Footer() {
+  const [tNav, tFooter, tCommon, locale, footer, contact] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("footer"),
+    getTranslations("common"),
+    getLocale(),
+    getSiteContentBlock("footer"),
+    getSiteContentBlock("contact"),
+  ]);
+  const localeTyped: "ar" | "en" = locale === "ar" ? "ar" : "en";
   const year = new Date().getFullYear();
+
+  const tagline = pickLocale(
+    localeTyped,
+    footer.tagline_ar,
+    footer.tagline_en,
+    tCommon("tagline"),
+  );
+  const hqAddress = pickLocale(
+    localeTyped,
+    contact.hq_address_ar,
+    contact.hq_address_en,
+    tFooter("address"),
+  );
+  const branchAddress = pickLocale(
+    localeTyped,
+    contact.branch_address_ar,
+    contact.branch_address_en,
+    tFooter("addressJeddah"),
+  );
+  const email = contact.email ?? "info@BPholding.net";
+  const phone = contact.hq_phone ?? "+966 54 50 86 220";
+  const phoneTel = phone.replace(/\s+/g, "");
 
   return (
     <footer className="mt-24 border-t border-border bg-card/40">
@@ -38,28 +73,33 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-4">
             <Logo size={72} />
-            <p className="text-sm text-muted-foreground max-w-sm">
-              {tCommon("tagline")}
-            </p>
+            <p className="text-sm text-muted-foreground max-w-sm">{tagline}</p>
             <div className="space-y-2 text-sm text-muted-foreground">
               <p className="flex items-center gap-2">
                 <MapPin className="size-4 text-brand-gold" />
-                {tFooter("address")}
+                {hqAddress}
               </p>
               <p className="flex items-center gap-2">
                 <MapPin className="size-4 text-brand-gold" />
-                {tFooter("addressJeddah")}
+                {branchAddress}
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="size-4 text-brand-gold" />
-                <a href="mailto:info@BPholding.net" className="hover:text-foreground transition-colors">
-                  info@BPholding.net
+                <a
+                  href={`mailto:${email}`}
+                  className="hover:text-foreground transition-colors"
+                >
+                  {email}
                 </a>
               </p>
               <p className="flex items-center gap-2">
                 <Phone className="size-4 text-brand-gold" />
-                <a href="tel:+966545086220" className="hover:text-foreground transition-colors" dir="ltr">
-                  +966 54 50 86 220
+                <a
+                  href={`tel:${phoneTel}`}
+                  className="hover:text-foreground transition-colors"
+                  dir="ltr"
+                >
+                  {phone}
                 </a>
               </p>
             </div>
@@ -81,17 +121,60 @@ export function Footer() {
             <h3 className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
               {tFooter("social")}
             </h3>
-            <div className="flex items-center gap-2">
-              <SocialIcon
-                href="https://www.linkedin.com/company/business-pioneers-holding/"
-                label="LinkedIn"
-                icon={<IconBrandLinkedin className="size-4" />}
-              />
-              <SocialIcon
-                href="https://www.facebook.com/p/Business-Pioneers-Holding-PB-61584852089418/"
-                label="Facebook"
-                icon={<IconBrandFacebook className="size-4" />}
-              />
+            <div className="flex items-center gap-2 flex-wrap">
+              {footer.socials.linkedin ? (
+                <SocialIcon
+                  href={footer.socials.linkedin}
+                  label="LinkedIn"
+                  icon={<IconBrandLinkedin className="size-4" />}
+                />
+              ) : null}
+              {footer.socials.twitter ? (
+                <SocialIcon
+                  href={footer.socials.twitter}
+                  label="X (Twitter)"
+                  icon={<IconBrandX className="size-4" />}
+                />
+              ) : null}
+              {footer.socials.facebook ? (
+                <SocialIcon
+                  href={footer.socials.facebook}
+                  label="Facebook"
+                  icon={<IconBrandFacebook className="size-4" />}
+                />
+              ) : null}
+              {footer.socials.instagram ? (
+                <SocialIcon
+                  href={footer.socials.instagram}
+                  label="Instagram"
+                  icon={<IconBrandInstagram className="size-4" />}
+                />
+              ) : null}
+              {footer.socials.youtube ? (
+                <SocialIcon
+                  href={footer.socials.youtube}
+                  label="YouTube"
+                  icon={<IconBrandYoutube className="size-4" />}
+                />
+              ) : null}
+              {!footer.socials.linkedin &&
+              !footer.socials.twitter &&
+              !footer.socials.facebook &&
+              !footer.socials.instagram &&
+              !footer.socials.youtube ? (
+                <>
+                  <SocialIcon
+                    href="https://www.linkedin.com/company/business-pioneers-holding/"
+                    label="LinkedIn"
+                    icon={<IconBrandLinkedin className="size-4" />}
+                  />
+                  <SocialIcon
+                    href="https://www.facebook.com/p/Business-Pioneers-Holding-PB-61584852089418/"
+                    label="Facebook"
+                    icon={<IconBrandFacebook className="size-4" />}
+                  />
+                </>
+              ) : null}
             </div>
           </div>
         </div>

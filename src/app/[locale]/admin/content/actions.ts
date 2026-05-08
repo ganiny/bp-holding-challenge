@@ -63,14 +63,14 @@ export async function saveSiteContent(
 
   const admin = createSupabaseAdminClient();
   // Upsert by primary key — insert if new, update otherwise.
-  const { error } = await admin.from("site_content").upsert(
-    {
-      key: parsed.data.key,
-      data: parsed.data.data,
-      updated_by: user.id,
-    },
-    { onConflict: "key" },
-  );
+  const payload = {
+    key: parsed.data.key,
+    data: parsed.data.data,
+    updated_by: user.id,
+  };
+  const { error } = await admin
+    .from("site_content")
+    .upsert(payload as never, { onConflict: "key" });
   if (error) {
     console.error("[admin/content] upsert failed", error);
     return { ok: false, code: "server_error" };

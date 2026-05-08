@@ -1050,6 +1050,82 @@
         "hoursEn": "Hours (English)",
         "hoursAr": "Hours (Arabic)"
       }
+    },
+    "messagesAdmin": {
+      "title": "Contact messages",
+      "lead": "Read incoming messages from the public contact form, reply directly via email, and keep the inbox clean.",
+      "search": "Search by name, email, subject, or body…",
+      "filterStatus": "Status",
+      "filterAll": "All",
+      "exportCsv": "Export CSV",
+      "status": {
+        "new": "New",
+        "read": "Read",
+        "replied": "Replied",
+        "closed": "Closed"
+      },
+      "table": {
+        "sender": "Sender",
+        "subject": "Subject",
+        "submitted": "Submitted",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "empty": "No messages match your filters.",
+      "actions": {
+        "view": "View",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      },
+      "confirmDelete": {
+        "title": "Delete this message?",
+        "body": "The message is removed from the database. This cannot be undone.",
+        "cta": "Yes, delete"
+      },
+      "drawer": {
+        "title": "Message",
+        "subtitle": "Read the full message, reply, or change the status."
+      },
+      "fields": {
+        "email": "Email",
+        "phone": "Phone",
+        "subject": "Subject",
+        "message": "Message",
+        "status": "Status"
+      },
+      "reply": {
+        "title": "Reply to sender",
+        "subtitle": "Sends a branded email to the sender. Replies come back to your work address.",
+        "subject": "Subject",
+        "subjectPlaceholder": "RE: …",
+        "body": "Message",
+        "bodyPlaceholder": "Write the response. Greeting and signature are added automatically.",
+        "send": "Send reply",
+        "sending": "Sending…",
+        "hint": "Status auto-bumps to 'Replied' on send."
+      },
+      "toast": {
+        "statusUpdated": "Status updated.",
+        "deleted": "Message deleted.",
+        "replySent": "Reply sent."
+      },
+      "errors": {
+        "replyFailed": "We couldn't send the email. Please retry — the issue is upstream.",
+        "replyValidation": "Subject and message are both required.",
+        "unauthorized": "Your session has expired. Please sign in again.",
+        "generic": "Something went wrong. Please try again."
+      },
+      "notProvided": "Not provided",
+      "csv": {
+        "id": "ID",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "subject": "Subject",
+        "message": "Message",
+        "status": "Status",
+        "submitted": "Submitted"
+      }
     }
   },
   "auth": {

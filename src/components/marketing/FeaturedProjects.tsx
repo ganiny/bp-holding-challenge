@@ -38,7 +38,7 @@ export function FeaturedProjects({
           <p className="mt-3 text-muted-foreground">{t("subtitle")}</p>
         </header>
 
-        <div className="grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <ProjectTile
               key={project.slug}
@@ -69,11 +69,11 @@ function ProjectTile({
   viewLabel: string;
 }) {
   return (
-    <CardContainer containerClassName="!py-2" className="">
-      <CardBody className="!h-auto !w-full max-w-md rounded-xl border border-border bg-card p-6 transition-shadow hover:shadow-2xl hover:border-brand-gold/40">
+    <CardContainer containerClassName="py-2! w-full! h-full" className="w-full! h-full">
+      <CardBody className="h-full! w-full! max-w-none! flex flex-col rounded-xl border border-border bg-card p-6 transition-shadow hover:shadow-2xl hover:border-brand-gold/40">
         <CardItem
           translateZ={90}
-          className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-brand-navy via-brand-navy/85 to-brand-navy-hover"
+          className="relative w-full! aspect-4/3 overflow-hidden rounded-lg bg-linear-to-br from-brand-navy via-brand-navy/85 to-brand-navy-hover"
         >
           <ImageKitProvider
             urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
@@ -81,19 +81,19 @@ function ProjectTile({
             <Image
               src={project.cover}
               fill
-              sizes="300px"
-              alt="cover image"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              alt={project.title}
               className="object-cover"
-              loading="eager"
             />
           </ImageKitProvider>
-          <div className="flex h-full w-full items-end p-4">
+          <div className="absolute inset-0 flex h-full w-full items-end p-4">
             <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-brand-gold">
-              {project.location ?? ""} {project.year ? `· ${project.year}` : ""}
+              {project.location ?? ""}{" "}
+              {project.year ? `· ${project.year}` : ""}
             </span>
           </div>
         </CardItem>
-        <CardItem translateZ={70} className="mt-4 w-full">
+        <CardItem translateZ={70} className="mt-4 w-full! flex-1">
           <h3 className="text-lg font-semibold tracking-tight">
             {project.title}
           </h3>
@@ -103,10 +103,10 @@ function ProjectTile({
             </p>
           ) : null}
         </CardItem>
-        <CardItem translateZ={40} className="mt-4 w-full">
+        <CardItem translateZ={40} className="mt-4 w-full!">
           <Link
             href={`/portfolio/${project.slug}`}
-            className="inline-flex items-center text-xs font-mono uppercase tracking-[0.18em] text-brand-navy hover:text-brand-gold transition-colors dark:text-brand-cream"
+            className="inline-flex items-center text-xs font-mono uppercase tracking-[0.18em] text-brand-navy hover:text-brand-gold transition-colors dark:text-brand-cream dark:hover:text-brand-gold"
           >
             {viewLabel}
             <ArrowRight className="ms-2 size-3 rtl:rotate-180" />
