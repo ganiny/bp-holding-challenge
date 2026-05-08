@@ -11,6 +11,7 @@
     "services": "Services",
     "portfolio": "Portfolio",
     "studio": "Studio",
+    "store": "Store",
     "certifications": "Certifications",
     "careers": "Careers",
     "contractors": "Contractors",
@@ -19,7 +20,8 @@
     "companyProfile": "Company profile",
     "login": "Sign in",
     "menu": "Menu",
-    "close": "Close"
+    "close": "Close",
+    "cart": "Cart"
   },
   "footer": {
     "exploreTitle": "Explore",
@@ -338,6 +340,7 @@
     "shell": {
       "brand": "BP Holding",
       "sectionMain": "Operations",
+      "sectionStore": "Store",
       "sectionContent": "Submissions",
       "sectionSettings": "System",
       "roleAdmin": "Admin console",
@@ -352,6 +355,8 @@
       "overview": "Overview",
       "projects": "Projects",
       "studio": "Portfolio studio",
+      "products": "Products",
+      "orders": "Orders",
       "careers": "Job postings",
       "jobApplications": "Job applications",
       "contractors": "Contractor registrations",
@@ -1189,6 +1194,116 @@
         "errorUnauthorized": "Your session has expired. Please sign in again.",
         "errorGeneric": "Something went wrong. Please try again."
       }
+    },
+    "productsAdmin": {
+      "title": "Products",
+      "lead": "Manage the catalog shown in the public store.",
+      "newProduct": "New product",
+      "search": "Search by name or slug…",
+      "empty": "No products yet.",
+      "sar": "SAR",
+      "table": {
+        "image": "Image",
+        "name": "Name",
+        "category": "Category",
+        "price": "Price",
+        "stock": "Stock",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "actions": {
+        "edit": "Edit",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      },
+      "confirmDelete": {
+        "title": "Delete product?",
+        "body": "This permanently removes the product. Any past orders will keep their snapshot.",
+        "cta": "Delete"
+      },
+      "drawer": {
+        "createTitle": "New product",
+        "editTitle": "Edit product",
+        "subtitle": "Bilingual fields, pricing, and inventory."
+      },
+      "form": {
+        "slug": "URL slug",
+        "slugHint": "Lowercase, hyphenated. Auto-generated from English name if left empty.",
+        "nameEn": "Name (English)",
+        "nameAr": "Name (Arabic)",
+        "descriptionEn": "Description (English)",
+        "descriptionAr": "Description (Arabic)",
+        "categoryEn": "Category (English)",
+        "categoryAr": "Category (Arabic)",
+        "price": "Price (SAR)",
+        "compareAt": "Compare-at price (optional)",
+        "stock": "Stock",
+        "status": "Status",
+        "featured": "Featured on store",
+        "sortOrder": "Sort order",
+        "cover": "Cover image",
+        "coverHint": "Recommended 1200×900, max 8 MB.",
+        "coverAdd": "Upload cover",
+        "coverReplace": "Replace cover",
+        "coverRemove": "Remove cover",
+        "save": "Save product",
+        "saving": "Saving…"
+      },
+      "status": {
+        "draft": "Draft",
+        "published": "Published",
+        "archived": "Archived"
+      },
+      "toast": {
+        "created": "Product created.",
+        "updated": "Product updated.",
+        "deleted": "Product deleted."
+      },
+      "errors": {
+        "validation": "Please review the highlighted fields.",
+        "conflict": "Slug already used by another product.",
+        "generic": "Something went wrong. Please try again."
+      }
+    },
+    "ordersAdmin": {
+      "title": "Orders",
+      "lead": "Track customer orders, update status, and view shipping details.",
+      "search": "Search by order number, name, or email…",
+      "filterStatus": "Status",
+      "filterAll": "All statuses",
+      "empty": "No orders match your filters.",
+      "expand": "Show details",
+      "collapse": "Hide details",
+      "sar": "SAR",
+      "table": {
+        "order": "Order",
+        "customer": "Customer",
+        "total": "Total",
+        "status": "Status",
+        "created": "Placed at",
+        "expand": ""
+      },
+      "details": {
+        "items": "Items",
+        "address": "Shipping address",
+        "notes": "Notes",
+        "contact": "Contact"
+      },
+      "status": {
+        "pending_payment": "Pending payment",
+        "paid": "Paid",
+        "processing": "Processing",
+        "shipped": "Shipped",
+        "delivered": "Delivered",
+        "cancelled": "Cancelled",
+        "refunded": "Refunded"
+      },
+      "toast": {
+        "updated": "Order updated."
+      },
+      "errors": {
+        "generic": "Something went wrong. Please try again."
+      }
     }
   },
   "auth": {
@@ -1424,5 +1539,101 @@
   "theme": {
     "switchToLight": "Switch to light mode",
     "switchToDark": "Switch to dark mode"
+  },
+  "store": {
+    "metaTitle": "Store — BP Holding",
+    "metaDescription": "Industrial supplies, safety equipment, and tools available for direct purchase.",
+    "eyebrow": "Online store",
+    "title": "Industrial supplies and equipment",
+    "lead": "Browse our selection of safety gear, hand tools, power tools, and site supplies — delivered across the Kingdom.",
+    "filterAll": "All categories",
+    "empty": "No products in this category yet.",
+    "card": {
+      "view": "View",
+      "addToCart": "Add to cart",
+      "added": "Added",
+      "outOfStock": "Out of stock"
+    },
+    "currency": {
+      "sar": "SAR"
+    },
+    "detail": {
+      "inStock": "In stock",
+      "quantity": "Quantity",
+      "buyNow": "Buy now"
+    }
+  },
+  "cart": {
+    "metaTitle": "Cart — BP Holding",
+    "title": "Your cart",
+    "empty": "Your cart is empty.",
+    "emptyCta": "Continue to the store",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "shippingNote": "Shipping is calculated at checkout. Free over 500 SAR.",
+    "checkout": "Continue to checkout",
+    "continueShopping": "Continue shopping",
+    "sar": "SAR",
+    "table": {
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Qty",
+      "lineTotal": "Total"
+    }
+  },
+  "checkout": {
+    "metaTitle": "Checkout — BP Holding",
+    "title": "Checkout",
+    "lead": "Tell us where to ship your order — our team will confirm payment by phone.",
+    "empty": "Your cart is empty.",
+    "emptyCta": "Browse the store",
+    "sections": {
+      "contact": "Contact information",
+      "shipping": "Shipping address"
+    },
+    "fields": {
+      "fullName": "Full name",
+      "email": "Email",
+      "phone": "Mobile phone",
+      "address": "Street address",
+      "addressPlaceholder": "Building, street, district…",
+      "city": "City",
+      "notes": "Order notes (optional)",
+      "notesPlaceholder": "Delivery instructions, gate code…"
+    },
+    "summary": {
+      "title": "Order summary",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "shippingFree": "Free",
+      "total": "Total"
+    },
+    "submit": {
+      "placeOrder": "Place order",
+      "placing": "Placing order…",
+      "successToast": "Order received — thank you!",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "errorStock": "One of the items is no longer in stock. Please review your cart."
+    },
+    "currency": {
+      "sar": "SAR"
+    },
+    "paymentNote": "Payment is collected on delivery during the demo. Mada and credit cards are coming next."
+  },
+  "orderConfirmed": {
+    "metaTitle": "Order confirmed — BP Holding",
+    "title": "Thank you for your order!",
+    "lead": "We have received your order, {name}. Our team will reach out shortly to confirm payment and shipping.",
+    "fields": {
+      "orderNumber": "Order number",
+      "email": "Confirmation sent to",
+      "total": "Total"
+    },
+    "currency": {
+      "sar": "SAR"
+    },
+    "emailNote": "A confirmation email has been sent. If you don't see it within a few minutes, check your spam folder.",
+    "ctaContinue": "Continue shopping",
+    "ctaHome": "Back to home"
   }
 }

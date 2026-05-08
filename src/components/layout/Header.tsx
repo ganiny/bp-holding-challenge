@@ -6,6 +6,7 @@ import { Logo } from "./Logo";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 import { MobileNav } from "./MobileNav";
+import { CartIndicator } from "./CartIndicator";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +15,7 @@ const PRIMARY_NAV = [
   { key: "services", href: "/services" },
   { key: "portfolio", href: "/portfolio" },
   { key: "studio", href: "/portfolio-studio" },
+  { key: "store", href: "/store" },
   { key: "certifications", href: "/certifications" },
   { key: "careers", href: "/careers" },
   { key: "contractors", href: "/contractors" },
@@ -50,6 +52,7 @@ export function Header() {
         </nav>
 
         <div className="ms-auto flex items-center gap-2">
+          <CartIndicator label={t("cart")} />
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link href="/rfq">{t("rfq")}</Link>
           </Button>

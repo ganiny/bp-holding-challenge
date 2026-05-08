@@ -24,6 +24,7 @@ const NAV_ITEMS = [
   { key: "services", href: "/services" },
   { key: "portfolio", href: "/portfolio" },
   { key: "studio", href: "/portfolio-studio" },
+  { key: "store", href: "/store" },
   { key: "certifications", href: "/certifications" },
   { key: "careers", href: "/careers" },
   { key: "contractors", href: "/contractors" },

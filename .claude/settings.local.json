@@ -83,7 +83,9 @@
       "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('messages/ar.json','utf8'\\)\\); console.log\\('ar ok'\\)\")",
       "PowerShell(Copy-Item \"node_modules/.pnpm/pdfjs-dist@5.4.296/node_modules/pdfjs-dist/build/pdf.worker.min.mjs\" \"public/pdf.worker.min.mjs\" -Force; if \\(Test-Path public/pdf.worker.min.mjs\\) { \\(Get-Item public/pdf.worker.min.mjs\\).Length })",
       "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('messages/en.json','utf8'\\)\\); JSON.parse\\(require\\('fs'\\).readFileSync\\('messages/ar.json','utf8'\\)\\); console.log\\('OK'\\);\")",
-      "Bash(find src/components/marketing/StudioGallery* -type f)"
+      "Bash(find src/components/marketing/StudioGallery* -type f)",
+      "Bash(npx --yes supabase --version)",
+      "Bash(node scripts/apply-store-migration.mjs)"
     ]
   }
 }

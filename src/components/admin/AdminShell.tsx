@@ -26,6 +26,8 @@ import {
   IconMenu2,
   IconLoader2,
   IconUserCircle,
+  IconShoppingBag,
+  IconReceipt2,
 } from "@tabler/icons-react";
 import {
   Sheet,
@@ -82,11 +84,14 @@ export type AdminShellCopy = {
   navCertifications: string;
   navContent: string;
   navSettings: string;
+  navProducts: string;
+  navOrders: string;
+  sectionStore: string;
   breadcrumbAdmin: string;
 };
 
 type Section = {
-  key: "main" | "content" | "settings";
+  key: "main" | "store" | "content" | "settings";
   items: {
     href: string;
     key: string;
@@ -117,6 +122,23 @@ function buildSections(copy: AdminShellCopy): Section[] {
           key: "studio",
           label: copy.navStudio,
           Icon: IconPhotoVideo,
+        },
+      ],
+    },
+    {
+      key: "store",
+      items: [
+        {
+          href: "/admin/products",
+          key: "products",
+          label: copy.navProducts,
+          Icon: IconShoppingBag,
+        },
+        {
+          href: "/admin/orders",
+          key: "orders",
+          label: copy.navOrders,
+          Icon: IconReceipt2,
         },
       ],
     },
@@ -343,9 +365,11 @@ function SidebarContent({
               <p className="px-2 pb-1 text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground">
                 {section.key === "main"
                   ? copy.sectionMain
-                  : section.key === "content"
-                    ? copy.sectionContent
-                    : copy.sectionSettings}
+                  : section.key === "store"
+                    ? copy.sectionStore
+                    : section.key === "content"
+                      ? copy.sectionContent
+                      : copy.sectionSettings}
               </p>
             ) : null}
             <ul className="space-y-0.5">

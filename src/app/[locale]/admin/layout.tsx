@@ -39,6 +39,7 @@ export default async function AdminLayout({
       copy={{
         brand: t("shell.brand"),
         sectionMain: t("shell.sectionMain"),
+        sectionStore: t("shell.sectionStore"),
         sectionContent: t("shell.sectionContent"),
         sectionSettings: t("shell.sectionSettings"),
         roleAdmin: t("shell.roleAdmin"),
@@ -51,6 +52,8 @@ export default async function AdminLayout({
         navOverview: t("nav.overview"),
         navProjects: t("nav.projects"),
         navStudio: t("nav.studio"),
+        navProducts: t("nav.products"),
+        navOrders: t("nav.orders"),
         navCareers: t("nav.careers"),
         navJobApplications: t("nav.jobApplications"),
         navContractors: t("nav.contractors"),

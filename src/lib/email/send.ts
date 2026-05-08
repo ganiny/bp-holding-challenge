@@ -6,6 +6,7 @@ import { jobApplicationConfirmation } from "./templates/job-application-confirma
 import { contractorApplicationConfirmation } from "./templates/contractor-application-confirmation";
 import { adminNotification } from "./templates/admin-notification";
 import { adminReply } from "./templates/admin-reply";
+import { orderConfirmation } from "./templates/order-confirmation";
 
 export type Locale = "ar" | "en";
 
@@ -18,6 +19,7 @@ type TemplateMap = {
   >[0];
   "admin-notification": Parameters<typeof adminNotification>[0];
   "admin-reply": Parameters<typeof adminReply>[0];
+  "order-confirmation": Parameters<typeof orderConfirmation>[0];
 };
 
 const templates = {
@@ -27,6 +29,7 @@ const templates = {
   "contractor-application-confirmation": contractorApplicationConfirmation,
   "admin-notification": adminNotification,
   "admin-reply": adminReply,
+  "order-confirmation": orderConfirmation,
 } as const;
 
 export async function sendMail<T extends keyof TemplateMap>(opts: {
