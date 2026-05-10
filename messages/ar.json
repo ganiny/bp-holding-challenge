@@ -198,7 +198,7 @@
       "documents": "تحميل الوثائق",
       "documentsHint": "PDF أو DOC أو DOCX أو JPG أو PNG — حتى 10 ميجابايت لكل ملف، وبحد أقصى 10 ملفات.",
       "documentsUploadLabel": "إضافة ملفات",
-      "documentsUploadedCount": "{count} ملف مرفق",
+      "documentsUploadedCount": "'{count}' ملف مرفق",
       "documentsRemove": "إزالة",
       "submit": "إرسال التسجيل",
       "submitting": "جارٍ الإرسال…",

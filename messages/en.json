@@ -198,7 +198,7 @@
       "documents": "Upload documents",
       "documentsHint": "PDF, DOC, DOCX, JPG, or PNG — up to 10 MB each, 10 files max.",
       "documentsUploadLabel": "Add files",
-      "documentsUploadedCount": "{count} file(s) attached",
+      "documentsUploadedCount": "'{count}' file(s) attached",
       "documentsRemove": "Remove",
       "submit": "Submit registration",
       "submitting": "Submitting…",
